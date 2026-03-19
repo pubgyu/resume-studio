@@ -12,6 +12,8 @@ import {
 
 import "./globals.scss";
 
+const OG_IMAGE_URL = absoluteUrl("/og/resume-room-og.png");
+
 const bodyFont = Noto_Sans_KR({
   subsets: ["latin"],
   variable: "--font-body",
@@ -39,7 +41,7 @@ export const metadata: Metadata = {
       {
         alt: SITE_NAME,
         height: 630,
-        url: absoluteUrl("/opengraph-image"),
+        url: OG_IMAGE_URL,
         width: 1200
       }
     ],
@@ -68,7 +70,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     description: SITE_DESCRIPTION,
-    images: [absoluteUrl("/twitter-image")],
+    images: [OG_IMAGE_URL],
     title: SITE_NAME
   }
 };

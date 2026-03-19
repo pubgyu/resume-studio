@@ -12,6 +12,7 @@ import { hasSupabaseEnv } from "@/lib/supabase/env";
 
 export const dynamic = "force-dynamic";
 const LOGIN_DESCRIPTION = "Google 계정으로 로그인하고 저장된 이력서를 이어서 편집하세요.";
+const LOGIN_OG_IMAGE = absoluteUrl("/og/resume-room-og.png");
 
 export const metadata: Metadata = {
   alternates: {
@@ -24,7 +25,7 @@ export const metadata: Metadata = {
       {
         alt: SITE_NAME,
         height: 630,
-        url: absoluteUrl("/opengraph-image"),
+        url: LOGIN_OG_IMAGE,
         width: 1200
       }
     ],
@@ -37,7 +38,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     description: LOGIN_DESCRIPTION,
-    images: [absoluteUrl("/twitter-image")],
+    images: [LOGIN_OG_IMAGE],
     title: `${SITE_NAME} 로그인`
   }
 };
