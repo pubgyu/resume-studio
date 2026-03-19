@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 
 import { GoogleSignInButton } from "@/app/components/auth/google-sign-in-button";
@@ -5,10 +6,27 @@ import { LoginBackground } from "@/app/components/auth/login-background";
 import { DraftCleanupOnMount } from "@/app/components/resume-builder/draft-cleanup-on-mount";
 import { SupabaseSetupNotice } from "@/app/components/setup/supabase-setup-notice";
 import { AppThemeToggle } from "@/app/components/theme/app-theme-toggle";
+import { SITE_NAME } from "@/lib/site-config";
 import { getCurrentUser } from "@/lib/resumes/server";
 import { hasSupabaseEnv } from "@/lib/supabase/env";
 
 export const dynamic = "force-dynamic";
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "/login"
+  },
+  description: "Google 계정으로 로그인하고 저장된 이력서를 이어서 편집하세요.",
+  openGraph: {
+    description: "Google 계정으로 로그인하고 저장된 이력서를 이어서 편집하세요.",
+    title: SITE_NAME,
+    url: "/login"
+  },
+  title: "로그인",
+  twitter: {
+    description: "Google 계정으로 로그인하고 저장된 이력서를 이어서 편집하세요.",
+    title: `${SITE_NAME} 로그인`
+  }
+};
 
 export default async function LoginPage() {
   if (!hasSupabaseEnv()) {

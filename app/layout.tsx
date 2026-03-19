@@ -2,6 +2,13 @@ import type { Metadata } from "next";
 import { Noto_Sans_KR } from "next/font/google";
 
 import { THEME_STORAGE_KEY } from "@/lib/resume-builder/constants";
+import {
+  absoluteUrl,
+  getSiteUrl,
+  SITE_DESCRIPTION,
+  SITE_KEYWORDS,
+  SITE_NAME
+} from "@/lib/site-config";
 
 import "./globals.scss";
 
@@ -12,10 +19,57 @@ const bodyFont = Noto_Sans_KR({
 });
 
 export const metadata: Metadata = {
-  title: "Resume Room",
-  description: "이력서를 작성하고 PDF로 저장할 수 있는 템플릿 앱",
+  alternates: {
+    canonical: "/"
+  },
+  applicationName: SITE_NAME,
+  category: "productivity",
+  description: SITE_DESCRIPTION,
   icons: {
-    icon: "/icon.svg"
+    apple: "/icon.svg",
+    icon: "/icon.svg",
+    shortcut: "/icon.svg"
+  },
+  keywords: SITE_KEYWORDS,
+  manifest: "/manifest.webmanifest",
+  metadataBase: getSiteUrl(),
+  openGraph: {
+    description: SITE_DESCRIPTION,
+    images: [
+      {
+        alt: SITE_NAME,
+        height: 630,
+        url: absoluteUrl("/opengraph-image"),
+        width: 1200
+      }
+    ],
+    locale: "ko_KR",
+    siteName: SITE_NAME,
+    title: SITE_NAME,
+    type: "website",
+    url: "/login"
+  },
+  referrer: "origin-when-cross-origin",
+  robots: {
+    follow: true,
+    googleBot: {
+      follow: true,
+      index: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1
+    },
+    index: true
+  },
+  title: {
+    default: SITE_NAME,
+    template: `%s | ${SITE_NAME}`
+  },
+  twitter: {
+    card: "summary_large_image",
+    description: SITE_DESCRIPTION,
+    images: [absoluteUrl("/twitter-image")],
+    title: SITE_NAME
   }
 };
 

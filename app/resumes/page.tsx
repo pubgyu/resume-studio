@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
@@ -7,10 +8,15 @@ import { ResumeListCard } from "@/app/components/resumes/resume-list-card";
 import { Button } from "@/app/components/ui/button";
 import { SupabaseSetupNotice } from "@/app/components/setup/supabase-setup-notice";
 import { AppThemeToggle } from "@/app/components/theme/app-theme-toggle";
+import { createNoIndexMetadata } from "@/lib/site-config";
 import { getCurrentUser, listUserResumes } from "@/lib/resumes/server";
 import { hasSupabaseEnv } from "@/lib/supabase/env";
 
 export const dynamic = "force-dynamic";
+export const metadata: Metadata = createNoIndexMetadata(
+  "내 이력서",
+  "저장된 이력서를 관리하는 개인 작업 공간입니다."
+);
 
 export default async function ResumesPage() {
   if (!hasSupabaseEnv()) {
