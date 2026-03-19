@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-import { SITE_NAME, SITE_TAGLINE } from "@/lib/site-config";
+import { SITE_NAME } from "@/lib/site-config";
 
 export const alt = SITE_NAME;
 export const contentType = "image/png";
@@ -14,68 +14,129 @@ export default function OpenGraphImage() {
     (
       <div
         style={{
-          alignItems: "stretch",
           background:
-            "radial-gradient(circle at top left, rgba(104, 130, 162, 0.24), transparent 28%), linear-gradient(180deg, #11161d 0%, #161b22 100%)",
+            "radial-gradient(circle at top right, rgba(124, 146, 176, 0.14), transparent 26%), linear-gradient(180deg, #0f1318 0%, #141920 100%)",
           color: "#eef2f6",
           display: "flex",
           flex: 1,
           fontFamily: "sans-serif",
           justifyContent: "center",
-          padding: "56px"
+          padding: "60px"
         }}
       >
         <div
           style={{
-            background: "rgba(18, 23, 30, 0.86)",
-            border: "1px solid rgba(125, 150, 179, 0.18)",
-            borderRadius: "32px",
+            alignItems: "stretch",
+            background: "rgba(18, 22, 28, 0.84)",
+            border: "1px solid rgba(144, 160, 178, 0.16)",
+            borderRadius: "28px",
             display: "flex",
             flex: 1,
             flexDirection: "column",
             justifyContent: "space-between",
-            padding: "56px"
+            overflow: "hidden",
+            padding: "64px"
           }}
         >
           <div
             style={{
-              color: "#9aa6b4",
+              background: "rgba(124, 146, 176, 0.82)",
+              borderRadius: "999px",
               display: "flex",
-              fontSize: 26,
-              fontWeight: 700,
-              letterSpacing: "0.28em",
-              textTransform: "uppercase"
+              height: 6,
+              width: 88
             }}
-          >
-            {SITE_NAME}
-          </div>
+          />
           <div
             style={{
               display: "flex",
               flexDirection: "column",
-              gap: 18
+              gap: 22,
+              marginTop: 32
             }}
           >
             <div
               style={{
-                color: "#f4f7fb",
+                color: "#9ea9b6",
                 display: "flex",
-                fontSize: 74,
-                fontWeight: 800,
-                lineHeight: 1.04
+                fontSize: 24,
+                fontWeight: 700,
+                letterSpacing: "0.22em",
+                textTransform: "uppercase"
               }}
             >
-              Resume builder for saving, editing, and exporting PDF.
+              {SITE_NAME}
             </div>
             <div
               style={{
-                color: "#aeb8c3",
+                color: "#f6f8fb",
                 display: "flex",
-                fontSize: 30,
-                lineHeight: 1.35
+                fontSize: 88,
+                fontWeight: 800,
+                letterSpacing: "-0.04em",
+                lineHeight: 0.98
               }}
             >
-              {SITE_TAGLINE}
+              Resume Room
+            </div>
+            <div
+              style={{
+                color: "#aab4bf",
+                display: "flex",
+                fontSize: 31,
+                lineHeight: 1.35,
+                maxWidth: 760
+              }}
+            >
+              Create, save, and export resumes in one calm workspace.
+            </div>
+          </div>
+          <div
+            style={{
+              alignItems: "center",
+              display: "flex",
+              gap: 18,
+              marginTop: "auto"
+            }}
+          >
+            <div
+              style={{
+                background: "rgba(255, 255, 255, 0.04)",
+                border: "1px solid rgba(144, 160, 178, 0.14)",
+                borderRadius: "999px",
+                display: "flex",
+                fontSize: 22,
+                fontWeight: 600,
+                padding: "14px 22px"
+              }}
+            >
+              Save drafts
+            </div>
+            <div
+              style={{
+                background: "rgba(255, 255, 255, 0.04)",
+                border: "1px solid rgba(144, 160, 178, 0.14)",
+                borderRadius: "999px",
+                display: "flex",
+                fontSize: 22,
+                fontWeight: 600,
+                padding: "14px 22px"
+              }}
+            >
+              Edit anytime
+            </div>
+            <div
+              style={{
+                background: "rgba(255, 255, 255, 0.04)",
+                border: "1px solid rgba(144, 160, 178, 0.14)",
+                borderRadius: "999px",
+                display: "flex",
+                fontSize: 22,
+                fontWeight: 600,
+                padding: "14px 22px"
+              }}
+            >
+              Export PDF
             </div>
           </div>
         </div>
