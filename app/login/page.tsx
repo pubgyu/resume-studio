@@ -6,12 +6,12 @@ import { LoginBackground } from "@/app/components/auth/login-background";
 import { DraftCleanupOnMount } from "@/app/components/resume-builder/draft-cleanup-on-mount";
 import { SupabaseSetupNotice } from "@/app/components/setup/supabase-setup-notice";
 import { AppThemeToggle } from "@/app/components/theme/app-theme-toggle";
-import { absoluteUrl, SITE_NAME } from "@/lib/site-config";
+import { absoluteUrl, SITE_DESCRIPTION, SITE_NAME } from "@/lib/site-config";
 import { getCurrentUser } from "@/lib/resumes/server";
 import { hasSupabaseEnv } from "@/lib/supabase/env";
 
 export const dynamic = "force-dynamic";
-const LOGIN_DESCRIPTION = "Google 계정으로 로그인하고 저장된 이력서를 이어서 편집하세요.";
+const LOGIN_DESCRIPTION = SITE_DESCRIPTION;
 const LOGIN_OG_IMAGE = absoluteUrl("/og/resume-room-og.png");
 
 export const metadata: Metadata = {

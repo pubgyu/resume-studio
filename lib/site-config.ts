@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 
 export const SITE_NAME = "Resume Room";
 export const SITE_DESCRIPTION =
-  "이력서를 작성하고 저장하고 PDF로 내보낼 수 있는 Resume Room 템플릿 서비스";
-export const SITE_TAGLINE = "Build, save, and export resumes with Resume Room.";
+  "Resume Room은 이력서를 작성하고 저장하고 PDF로 내보낼 수 있는 온라인 이력서 작업 공간입니다.";
+export const SITE_TAGLINE = "Create, save, and export resumes in one workspace.";
 export const SITE_KEYWORDS = [
   "resume builder",
   "resume template",
