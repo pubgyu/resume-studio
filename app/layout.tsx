@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
-import { Nanum_Myeongjo, Noto_Sans_KR } from "next/font/google";
+import { Noto_Sans_KR } from "next/font/google";
 
-import "./globals.css";
+import { THEME_STORAGE_KEY } from "@/lib/resume-builder/constants";
+
+import "./globals.scss";
 
 const bodyFont = Noto_Sans_KR({
   subsets: ["latin"],
@@ -9,16 +11,34 @@ const bodyFont = Noto_Sans_KR({
   weight: ["400", "500", "700"]
 });
 
-const displayFont = Nanum_Myeongjo({
-  subsets: ["latin"],
-  variable: "--font-display",
-  weight: ["400", "700", "800"]
-});
-
 export const metadata: Metadata = {
-  title: "Resume Studio",
-  description: "이력서를 작성하고 PDF로 저장할 수 있는 템플릿 앱"
+  title: "Resume Room",
+  description: "이력서를 작성하고 PDF로 저장할 수 있는 템플릿 앱",
+  icons: {
+    icon: "/icon.svg"
+  }
 };
+
+const themeBootstrapScript = `(() => {
+  let theme = "light";
+
+  try {
+    const savedTheme = window.localStorage.getItem(${JSON.stringify(THEME_STORAGE_KEY)});
+
+    if (savedTheme === "light" || savedTheme === "dark") {
+      theme = savedTheme;
+    } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      theme = "dark";
+    }
+  } catch {}
+
+  document.documentElement.dataset.theme = theme;
+  document.documentElement.style.colorScheme = theme === "dark" ? "dark" : "light";
+
+  if (document.body) {
+    document.body.dataset.theme = theme;
+  }
+})();`;
 
 export default function RootLayout({
   children
@@ -26,8 +46,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko">
-      <body className={`${bodyFont.variable} ${displayFont.variable}`}>
+    <html lang="ko" suppressHydrationWarning>
+      <body className={bodyFont.variable} suppressHydrationWarning>
+        <script dangerouslySetInnerHTML={{ __html: themeBootstrapScript }} />
         {children}
       </body>
     </html>

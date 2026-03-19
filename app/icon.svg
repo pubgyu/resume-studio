@@ -1,0 +1,38 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="paper" x1="182" y1="88" x2="334" y2="428" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FAFAFA"/>
+      <stop offset="1" stop-color="#E7E7E7"/>
+    </linearGradient>
+  </defs>
+
+  <path
+    d="M118 48H314L400 134V464H118V48Z"
+    fill="url(#paper)"
+    stroke="#1F1F1F"
+    stroke-linejoin="round"
+    stroke-width="18"
+  />
+  <path
+    d="M314 48V134H400"
+    fill="#D8D8D8"
+    stroke="#1F1F1F"
+    stroke-linejoin="round"
+    stroke-width="18"
+  />
+
+  <rect x="170" y="206" width="28" height="28" fill="#242424"/>
+  <rect x="208" y="206" width="28" height="28" fill="#242424"/>
+  <rect x="246" y="206" width="28" height="28" fill="#242424"/>
+  <rect x="284" y="206" width="28" height="28" fill="#242424"/>
+  <rect x="322" y="206" width="28" height="28" fill="#242424"/>
+
+  <rect x="170" y="252" width="28" height="28" fill="#595959"/>
+  <rect x="208" y="252" width="28" height="28" fill="#595959"/>
+  <rect x="246" y="252" width="28" height="28" fill="#595959"/>
+  <rect x="284" y="252" width="28" height="28" fill="#595959"/>
+
+  <rect x="170" y="108" width="28" height="28" fill="#CFCFCF"/>
+  <rect x="208" y="108" width="28" height="28" fill="#CFCFCF"/>
+  <rect x="170" y="146" width="28" height="28" fill="#CFCFCF"/>
+</svg>

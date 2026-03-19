@@ -1,0 +1,72 @@
+.item {
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  width: 100%;
+}
+
+.trigger {
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.68rem;
+  text-align: left;
+  cursor: pointer;
+}
+
+.icon {
+  width: 0.88rem;
+  height: 0.88rem;
+  flex-shrink: 0;
+  color: var(--muted);
+  transition:
+    transform 160ms ease,
+    color 160ms ease;
+}
+
+.trigger[data-state="open"] .icon {
+  transform: rotate(180deg);
+}
+
+.content {
+  overflow: hidden;
+
+  &[data-state="open"] {
+    animation: accordionDown 180ms ease-out;
+  }
+
+  &[data-state="closed"] {
+    animation: accordionUp 160ms ease-out;
+  }
+}
+
+.contentInner {
+  padding-top: 0.62rem;
+}
+
+@keyframes accordionDown {
+  from {
+    height: 0;
+  }
+
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+
+@keyframes accordionUp {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+
+  to {
+    height: 0;
+  }
+}
