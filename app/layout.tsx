@@ -13,6 +13,7 @@ import {
 import "./globals.scss";
 
 const OG_IMAGE_URL = absoluteUrl("/og/resume-room-og.png");
+const TWITTER_IMAGE_URL = absoluteUrl("/og/resume-room-og.png");
 
 const bodyFont = Noto_Sans_KR({
   subsets: ["latin"],
@@ -76,7 +77,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     description: SITE_DESCRIPTION,
-    images: [OG_IMAGE_URL],
+    images: [TWITTER_IMAGE_URL],
     title: SITE_NAME
   }
 };

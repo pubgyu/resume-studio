@@ -13,6 +13,7 @@ import { hasSupabaseEnv } from "@/lib/supabase/env";
 export const dynamic = "force-dynamic";
 const LOGIN_DESCRIPTION = SITE_DESCRIPTION;
 const LOGIN_OG_IMAGE = absoluteUrl("/og/resume-room-og.png");
+const LOGIN_TWITTER_IMAGE = absoluteUrl("/og/resume-room-og.png");
 
 export const metadata: Metadata = {
   alternates: {
@@ -38,7 +39,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     description: LOGIN_DESCRIPTION,
-    images: [LOGIN_OG_IMAGE],
+    images: [LOGIN_TWITTER_IMAGE],
     title: `${SITE_NAME} 로그인`
   }
 };
