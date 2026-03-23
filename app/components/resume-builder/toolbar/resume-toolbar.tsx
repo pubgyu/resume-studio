@@ -57,7 +57,7 @@ export function ResumeToolbar({
     themeMode === "dark" ? "라이트 모드로 전환" : "다크 모드로 전환";
 
   return (
-    <div className="toolbar" aria-label="문서 제어">
+    <div className="toolbar toolbar-clustered" aria-label="문서 제어">
       <input
         ref={importInputRef}
         type="file"
@@ -65,47 +65,55 @@ export function ResumeToolbar({
         className="visually-hidden"
         onChange={onImportJson}
       />
-      <ThemeSwitch
-        checked={themeMode === "dark"}
-        label={themeToggleLabel}
-        onToggle={() => toggleThemeMode()}
-      />
-      <ToolbarMenu
-        canManageRecord={canManageRecord}
-        isDeleting={isDeleting}
-        isDuplicating={isDuplicating}
-        onBackToList={onBackToList}
-        onClearResume={onClearResume}
-        onDelete={onDelete}
-        onDuplicate={onDuplicate}
-        onExportJson={onExportJson}
-        onOpenImport={onOpenImport}
-        onSignOut={onSignOut}
-      />
-      <Button
-        type="button"
-        variant="ghost"
-        onClick={onBackToList}
-      >
-        목록
-      </Button>
-      <Button
-        data-disabled-cursor={isSaving || isAutoSaving ? "wait" : "forbidden"}
-        type="button"
-        variant="primary"
-        onClick={onSave}
-        disabled={isSaving || isAutoSaving || !isDirty}
-      >
-        {isSaving ? "저장 중..." : isAutoSaving ? "자동 저장 중..." : isDirty ? "저장" : "저장됨"}
-      </Button>
-      <Button
-        type="button"
-        variant="ghost"
-        onClick={onDownloadPdf}
-        disabled={isExportingPdf}
-      >
-        {isExportingPdf ? "PDF 생성 중..." : "PDF 다운로드"}
-      </Button>
+      <div className="toolbar-group toolbar-group-secondary toolbar-group-mobile-utility">
+        <ThemeSwitch
+          checked={themeMode === "dark"}
+          label={themeToggleLabel}
+          onToggle={() => toggleThemeMode()}
+        />
+        <ToolbarMenu
+          canManageRecord={canManageRecord}
+          isDeleting={isDeleting}
+          isDuplicating={isDuplicating}
+          onBackToList={onBackToList}
+          onClearResume={onClearResume}
+          onDelete={onDelete}
+          onDuplicate={onDuplicate}
+          onExportJson={onExportJson}
+          onOpenImport={onOpenImport}
+          onSignOut={onSignOut}
+        />
+        <Button className="toolbar-list-button" type="button" variant="ghost" onClick={onBackToList}>
+          목록
+        </Button>
+      </div>
+      <div className="toolbar-group toolbar-group-primary toolbar-group-mobile-primary">
+        <Button
+          className="toolbar-save-button"
+          data-disabled-cursor={isSaving || isAutoSaving ? "wait" : "forbidden"}
+          type="button"
+          variant="primary"
+          onClick={onSave}
+          disabled={isSaving || isAutoSaving || !isDirty}
+        >
+          {isSaving
+            ? "저장 중..."
+            : isAutoSaving
+              ? "자동 저장 중..."
+              : isDirty
+                ? "저장"
+                : "저장됨"}
+        </Button>
+        <Button
+          className="toolbar-pdf-button"
+          type="button"
+          variant="ghost"
+          onClick={onDownloadPdf}
+          disabled={isExportingPdf}
+        >
+          {isExportingPdf ? "PDF 생성 중..." : "PDF 다운로드"}
+        </Button>
+      </div>
     </div>
   );
 }

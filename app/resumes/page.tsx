@@ -37,22 +37,27 @@ export default async function ResumesPage() {
       <section className="studio-shell resumes-shell">
         <header className="studio-topbar resumes-topbar">
           <div className="hero-copy">
-            <h1 className="eyebrow hero-brand">Resume Room</h1>
+            <p className="eyebrow topbar-kicker">Resume Room</p>
+            <h1 className="page-title">작업 중인 이력서</h1>
             <p className="intro">
               저장된 이력서를 다시 열거나 새 이력서를 만들어 계속 관리할 수 있습니다.
             </p>
             <div className="topbar-meta">
               <span className="topbar-meta-badge">{resumes.length}개 저장됨</span>
-              <span className="topbar-meta-text">저장된 이력서 목록</span>
+              <span className="topbar-meta-text">문서 서랍장에서 최근 작업을 이어갈 수 있습니다.</span>
             </div>
           </div>
 
-          <div className="toolbar">
-            <AppThemeToggle />
-            <Button asChild type="button" variant="primary">
-              <Link href="/resumes/new?fresh=1">새 이력서</Link>
-            </Button>
-            <SignOutButton />
+          <div className="toolbar toolbar-clustered">
+            <div className="toolbar-group toolbar-group-secondary">
+              <AppThemeToggle />
+              <SignOutButton />
+            </div>
+            <div className="toolbar-group toolbar-group-primary">
+              <Button asChild className="resumes-new-button" type="button" variant="primary">
+                <Link href="/resumes/new?fresh=1">새 이력서</Link>
+              </Button>
+            </div>
           </div>
         </header>
 
@@ -60,7 +65,7 @@ export default async function ResumesPage() {
           <section className="panel-card resumes-empty">
             <h2>아직 저장된 이력서가 없습니다</h2>
             <p>첫 이력서를 만들면 여기서 카드 형식으로 다시 열 수 있습니다.</p>
-            <Button asChild type="button" variant="primary">
+            <Button asChild className="resumes-new-button" type="button" variant="primary">
               <Link href="/resumes/new?fresh=1">첫 이력서 만들기</Link>
             </Button>
           </section>

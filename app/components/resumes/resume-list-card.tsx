@@ -70,13 +70,46 @@ export function ResumeListCard({ resume }: ResumeListCardProps) {
   return (
     <article className="panel-card resume-card">
       <Link className="resume-card-main" href={`/resumes/${resume.id}`}>
-        <div className="resume-card-copy">
-          <p className="resume-card-label">Resume</p>
-          <h2>{resume.resumeName}</h2>
+        <div className="resume-card-thumbnail" aria-hidden="true">
+          <span className="resume-card-thumbnail-accent" />
+          <div className="resume-card-paper">
+            <div className="resume-card-paper-header">
+              <span className="resume-card-paper-title" />
+              <span className="resume-card-paper-mark" />
+            </div>
+            <div className="resume-card-paper-lines">
+              <span />
+              <span />
+              <span />
+            </div>
+            <div className="resume-card-paper-section">
+              <span className="resume-card-paper-section-label" />
+              <span />
+              <span />
+              <span />
+            </div>
+            <div className="resume-card-paper-section compact">
+              <span className="resume-card-paper-section-label" />
+              <span />
+              <span />
+            </div>
+            <div className="resume-card-paper-footer">
+              <span />
+              <span />
+            </div>
+          </div>
         </div>
-        <p className="resume-card-meta">
-          마지막 저장 {new Date(resume.updatedAt).toLocaleString("ko-KR")}
-        </p>
+
+        <div className="resume-card-copy">
+          <p className="resume-card-label">저장된 문서</p>
+          <h2>{resume.resumeName}</h2>
+          <div className="resume-card-meta-row">
+            <span className="resume-card-template">작업 중</span>
+            <p className="resume-card-meta">
+              최근 수정 {new Date(resume.updatedAt).toLocaleDateString("ko-KR")}
+            </p>
+          </div>
+        </div>
       </Link>
 
       <div className="resume-card-actions">

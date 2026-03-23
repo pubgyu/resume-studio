@@ -108,7 +108,7 @@ export function ToolbarMenu({
             variant="ghost"
             onClick={() => runAndClose(onOpenImport)}
           >
-            이력서 data 불러오기
+            이력서 data import
           </Button>
           <Button
             className={styles.item}
@@ -117,7 +117,7 @@ export function ToolbarMenu({
             variant="ghost"
             onClick={() => runAndClose(onExportJson)}
           >
-            이력서 data 내려오기
+            이력서 data export
           </Button>
           {canManageRecord && onDuplicate ? (
             <Button

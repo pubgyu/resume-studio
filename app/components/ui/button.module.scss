@@ -1,26 +1,26 @@
 .button {
   border: 1px solid transparent;
-  border-radius: 0.82rem;
+  border-radius: 1rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
   font: inherit;
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-size: 0.88rem;
+  font-weight: 700;
   line-height: 1;
   cursor: pointer;
   transition:
-    transform 160ms ease,
-    background-color 160ms ease,
-    color 160ms ease,
-    border-color 160ms ease,
-    box-shadow 160ms ease,
-    opacity 160ms ease;
+    transform var(--motion-fast) var(--ease-standard),
+    background-color var(--motion-fast) var(--ease-standard),
+    color var(--motion-fast) var(--ease-standard),
+    border-color var(--motion-fast) var(--ease-standard),
+    box-shadow var(--motion-fast) var(--ease-standard),
+    opacity var(--motion-fast) var(--ease-standard);
 
   &:hover {
     transform: translateY(-1px);
-    box-shadow: 0 8px 18px rgba(15, 23, 42, 0.05);
+    box-shadow: var(--shadow-soft);
   }
 
   &:disabled {
@@ -29,44 +29,49 @@
     transform: none;
   }
 
+  &:focus-visible {
+    outline: none;
+    box-shadow: var(--shadow-focus);
+  }
+
   &[data-disabled-cursor="wait"]:disabled {
     cursor: wait;
   }
 }
 
 .defaultSize {
-  min-height: 2.68rem;
-  padding: 0.72rem 0.94rem;
+  min-height: 2.75rem;
+  padding: 0.72rem 1rem;
 }
 
 .smallSize {
-  min-height: 2rem;
-  padding: 0.4rem 0.72rem;
+  min-height: 2.18rem;
+  padding: 0.42rem 0.76rem;
 }
 
 .iconSize {
-  width: 2.32rem;
-  height: 2.32rem;
+  width: 2.5rem;
+  height: 2.5rem;
   padding: 0;
 }
 
 .primary {
   color: var(--accent-contrast);
   border-color: transparent;
-  background: var(--accent);
-  box-shadow: 0 8px 18px rgba(78, 102, 133, 0.12);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 92%, white 8%), var(--accent));
+  box-shadow: 0 10px 22px rgba(116, 67, 43, 0.16);
 }
 
 .ghost {
   color: var(--ink);
-  background: var(--surface-subtle);
+  background: color-mix(in srgb, var(--panel-strong) 84%, transparent);
   border-color: var(--line);
 }
 
 .soft {
   color: var(--accent-dark);
   background: var(--accent-soft);
-  border-color: transparent;
+  border-color: rgba(168, 101, 67, 0.12);
 }
 
 .link {
@@ -82,6 +87,14 @@
   }
 }
 
+:global(body[data-theme="dark"]) .primary {
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.24);
+}
+
+:global(body[data-theme="dark"]) .ghost {
+  background: color-mix(in srgb, var(--panel-strong) 92%, transparent);
+}
+
 :global(body[data-theme="dark"]) .button:hover {
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.14);
+  box-shadow: var(--shadow-soft);
 }

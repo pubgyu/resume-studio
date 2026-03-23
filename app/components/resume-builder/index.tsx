@@ -63,6 +63,7 @@ import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 import { EditorPanel } from "./editor/editor-panel";
 import { ResumePreview } from "./preview/resume-preview";
 import { ResumeToolbar } from "./toolbar/resume-toolbar";
+import { Button } from "@/app/components/ui/button";
 
 const DB_AUTOSAVE_IDLE_MS = 10000;
 
@@ -101,6 +102,7 @@ export function ResumeBuilder({
   const [isExportingPdf, setIsExportingPdf] = useState(false);
   const [isAutoSaving, setIsAutoSaving] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
+  const [mobileView, setMobileView] = useState<"edit" | "preview">("edit");
   const [presentation, setPresentationState] = useState<ResumePresentation>(initialPresentation);
   const [resume, setResumeState] = useState<ResumeData>(initialResume);
   const [resumeName, setResumeNameState] = useState(initialResumeName);
@@ -207,6 +209,7 @@ export function ResumeBuilder({
       setResumeState(nextDocument.resume);
       setResumeNameState(nextDocument.resumeName);
       setSaveErrorMessage("");
+      setMobileView("edit");
 
       if (options?.flushDraft) {
         flushDraftPersist(nextDocument);
@@ -997,14 +1000,14 @@ export function ResumeBuilder({
       <div className="page-glow page-glow-right" />
       <div className="page-glow page-glow-center" />
 
-      <section className="studio-shell">
-        <header className="studio-topbar">
+      <section className="studio-shell editor-shell">
+        <header className="studio-topbar editor-topbar">
           <div className="hero-copy">
             <div className="hero-heading-row">
-              <h1 className="eyebrow hero-brand">Resume Room</h1>
-              <span className={`editor-save-state ${isDirty ? "is-dirty" : ""}`}>
-                {saveStateLabel}
-              </span>
+              <div className="hero-title-block">
+                <p className="eyebrow topbar-kicker">Resume Room</p>
+                <h1 className="page-title editor-page-title">이력서 작업실</h1>
+              </div>
             </div>
 
             <label className="resume-name-field">
@@ -1018,8 +1021,14 @@ export function ResumeBuilder({
 
             <p className="intro">
               왼쪽에서 내용을 편집하면 오른쪽 문서가 즉시 갱신되고, 저장된 이력서는 잠시
-              멈추면 자동으로 DB에 반영됩니다.
+              멈추면 자동으로 저장 합니다.
             </p>
+
+            <div className="topbar-meta editor-topbar-meta">
+              <span className={`editor-save-state ${isDirty ? "is-dirty" : ""}`}>
+                {saveStateLabel}
+              </span>
+            </div>
 
             {saveErrorMessage ? <p className="editor-error-banner">{saveErrorMessage}</p> : null}
           </div>
@@ -1046,7 +1055,7 @@ export function ResumeBuilder({
           />
         </header>
 
-        <div className="studio-grid">
+        <div className="studio-grid" data-mobile-view={mobileView}>
           <EditorPanel
             onAddLanguageStudy={() =>
               setDocument((current) => ({
@@ -1188,6 +1197,35 @@ export function ResumeBuilder({
           />
 
           <ResumePreview presentation={deferredPresentation} resume={deferredResume} />
+        </div>
+
+        <div className="mobile-editor-bar" aria-label="모바일 문서 제어">
+          <Button
+            className="mobile-editor-bar-save"
+            data-disabled-cursor={isSaving || isAutoSaving ? "wait" : "forbidden"}
+            type="button"
+            variant="primary"
+            onClick={handleSave}
+            disabled={isSaving || isAutoSaving || !isDirty}
+          >
+            {isSaving
+              ? "저장 중..."
+              : isAutoSaving
+                ? "자동 저장 중..."
+                : isDirty
+                  ? "저장"
+                  : "저장됨"}
+          </Button>
+          <Button
+            className="mobile-editor-bar-toggle"
+            type="button"
+            variant={mobileView === "preview" ? "soft" : "ghost"}
+            onClick={() =>
+              setMobileView((current) => (current === "edit" ? "preview" : "edit"))
+            }
+          >
+            {mobileView === "edit" ? "미리보기" : "편집"}
+          </Button>
         </div>
       </section>
     </main>

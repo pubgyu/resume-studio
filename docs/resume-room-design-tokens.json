@@ -1,0 +1,127 @@
+{
+  "meta": {
+    "name": "Paper Atelier",
+    "product": "Resume Room",
+    "version": "1.1.0",
+    "checkedAt": "2026-03-23",
+    "notes": "Design tokens for app chrome, mobile UX, and resume preview."
+  },
+  "fonts": {
+    "display": {
+      "family": "Noto Sans KR",
+      "usage": "brand, hero, major titles",
+      "weights": [700, 800]
+    },
+    "body": {
+      "family": "Noto Sans KR",
+      "usage": "ui, body, forms, buttons",
+      "weights": [400, 500, 700]
+    },
+    "mono": {
+      "family": "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace",
+      "usage": "code and technical labels"
+    }
+  },
+  "layout": {
+    "shellMaxWidth": "1440px",
+    "editorColumnsDesktop": "minmax(380px, 430px) minmax(0, 1fr)",
+    "resumeGridDesktop": "repeat(4, minmax(0, 1fr))",
+    "resumeGridTablet": "repeat(2, minmax(0, 1fr))",
+    "resumeGridMobile": "1fr"
+  },
+  "breakpoints": {
+    "desktopWide": "1101px",
+    "tablet": "1100px",
+    "mobile": "720px",
+    "mobileCompact": "520px"
+  },
+  "spacing": {
+    "2xs": "4px",
+    "xs": "8px",
+    "sm": "12px",
+    "md": "16px",
+    "lg": "24px",
+    "xl": "32px",
+    "2xl": "48px",
+    "3xl": "72px"
+  },
+  "radius": {
+    "button": "16px",
+    "input": "16px",
+    "card": "22px",
+    "heroCard": "28px",
+    "pill": "999px"
+  },
+  "shadow": {
+    "panel": "0 18px 40px rgba(43, 31, 24, 0.08)",
+    "panelSoft": "0 8px 18px rgba(43, 31, 24, 0.06)",
+    "paper": "0 32px 72px rgba(33, 24, 20, 0.18)",
+    "focus": "0 0 0 4px rgba(168, 101, 67, 0.14)"
+  },
+  "motion": {
+    "fast": "160ms",
+    "base": "220ms",
+    "slow": "260ms",
+    "easing": "cubic-bezier(0.22, 1, 0.36, 1)"
+  },
+  "light": {
+    "canvas": "#f5efe7",
+    "canvasElevated": "#fbf7f2",
+    "panel": "rgba(255, 250, 244, 0.9)",
+    "panelStrong": "#fffdf9",
+    "paper": "#fffaf3",
+    "ink": "#1f1a17",
+    "inkSoft": "#665b52",
+    "line": "rgba(95, 78, 66, 0.14)",
+    "lineStrong": "rgba(95, 78, 66, 0.24)",
+    "accent": "#a86543",
+    "accentDeep": "#74432b",
+    "accentSoft": "rgba(168, 101, 67, 0.1)",
+    "accentContrast": "#fff8f2",
+    "surfaceSubtle": "#f7f1ea",
+    "danger": "#b55e53",
+    "dangerSoft": "rgba(181, 94, 83, 0.1)"
+  },
+  "dark": {
+    "canvas": "#171311",
+    "canvasElevated": "#1c1715",
+    "panel": "rgba(31, 25, 22, 0.92)",
+    "panelStrong": "#26201d",
+    "paper": "#f7efe6",
+    "ink": "#f7efe7",
+    "inkSoft": "#baaea2",
+    "line": "rgba(205, 185, 171, 0.14)",
+    "lineStrong": "rgba(205, 185, 171, 0.22)",
+    "accent": "#d8926c",
+    "accentDeep": "#f2cab3",
+    "accentSoft": "rgba(216, 146, 108, 0.14)",
+    "accentContrast": "#1d1613",
+    "surfaceSubtle": "#221c19",
+    "danger": "#e59a8f",
+    "dangerSoft": "rgba(161, 70, 58, 0.18)"
+  },
+  "resumePaper": {
+    "paper": "#fffaf2",
+    "ink": "#1f1d1b",
+    "muted": "#6c6258",
+    "line": "rgba(31, 29, 27, 0.12)",
+    "accent": "#a35f3e",
+    "accentDeep": "#734029"
+  },
+  "components": {
+    "topbarHeightDesktop": "72px",
+    "buttonHeight": "44px",
+    "buttonHeightMobile": "52px",
+    "inputMinHeight": "46px",
+    "inputMinHeightMobile": "48px",
+    "touchTargetMin": "48px",
+    "mobilePageGutter": "16px",
+    "mobileSectionGap": "14px",
+    "mobileBottomBarHeight": "64px",
+    "resumeCardAspectRatio": "0.88",
+    "resumeCardThumbnailRatio": "0.68",
+    "resumeCardThumbnailRatioMobile": "0.32",
+    "previewStickyOffset": "12px",
+    "safeAreaBottom": "env(safe-area-inset-bottom, 0px)"
+  }
+}

@@ -20,6 +20,12 @@ const bodyFont = Noto_Sans_KR({
   weight: ["400", "500", "700"]
 });
 
+const displayFont = Noto_Sans_KR({
+  subsets: ["latin"],
+  variable: "--font-display",
+  weight: ["700", "800"]
+});
+
 export const metadata: Metadata = {
   alternates: {
     canonical: "/"
@@ -103,7 +109,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko" suppressHydrationWarning>
-      <body className={bodyFont.variable} suppressHydrationWarning>
+      <body className={`${bodyFont.variable} ${displayFont.variable}`} suppressHydrationWarning>
         <script dangerouslySetInnerHTML={{ __html: themeBootstrapScript }} />
         {children}
       </body>

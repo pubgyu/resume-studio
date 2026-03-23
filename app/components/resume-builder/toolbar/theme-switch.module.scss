@@ -4,8 +4,9 @@
   line-height: 0;
   padding: 0.16rem;
   border: 1px solid var(--line);
-  border-radius: 0.95rem;
-  background: var(--surface-subtle);
+  border-radius: 1rem;
+  background: color-mix(in srgb, var(--panel-strong) 84%, transparent);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.46);
 }
 
 .switchRoot {
@@ -18,6 +19,6 @@
 
 .switchIcon {
   display: block;
-  width: 0.8rem;
-  height: 0.8rem;
+  width: 0.78rem;
+  height: 0.78rem;
 }
