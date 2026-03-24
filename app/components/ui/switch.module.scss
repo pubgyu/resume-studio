@@ -1,12 +1,12 @@
 .root {
   display: inline-flex;
   align-items: center;
-  width: 3rem;
-  height: 1.82rem;
-  padding: 0.14rem;
+  width: 2.7rem;
+  height: 1.56rem;
+  padding: 0.12rem;
   border: 1px solid var(--line);
   border-radius: 999px;
-  background: color-mix(in srgb, var(--panel-strong) 80%, transparent);
+  background: var(--button-neutral, color-mix(in srgb, var(--panel) 88%, transparent));
   position: relative;
   cursor: pointer;
   transition:
@@ -15,8 +15,8 @@
     box-shadow var(--motion-fast) var(--ease-standard);
 
   &[data-state="checked"] {
-    background: var(--accent-soft);
-    border-color: var(--line-strong);
+    background: var(--row-active, rgba(255, 255, 255, 0.08));
+    border-color: var(--line-strong, rgba(255, 255, 255, 0.12));
   }
 
   &:focus-visible {
@@ -29,12 +29,12 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 1.38rem;
-  height: 1.38rem;
+  width: 1.24rem;
+  height: 1.24rem;
   border-radius: 999px;
   background: var(--panel-strong);
   border: 1px solid var(--line);
-  box-shadow: 0 3px 8px rgba(43, 31, 24, 0.08);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
   transform: translateX(0);
   transition:
     transform var(--motion-fast) var(--ease-standard),
@@ -43,9 +43,9 @@
     box-shadow var(--motion-fast) var(--ease-standard);
 
   .root[data-state="checked"] & {
-    background: var(--accent);
-    border-color: transparent;
-    box-shadow: 0 4px 10px rgba(116, 67, 43, 0.16);
-    transform: translateX(1.18rem);
+    background: var(--panel-strong);
+    border-color: var(--line-strong, var(--line));
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+    transform: translateX(1.08rem);
   }
 }

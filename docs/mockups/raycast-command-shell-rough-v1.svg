@@ -1,0 +1,218 @@
+<svg width="1600" height="1220" viewBox="0 0 1600 1220" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1600" y2="1220" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0A0B10"/>
+      <stop offset="1" stop-color="#0E1017"/>
+    </linearGradient>
+    <radialGradient id="redBloom" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(380 300) rotate(20) scale(420 180)">
+      <stop stop-color="#9E1F18" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#9E1F18" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="amberBloom" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1180 280) rotate(-10) scale(300 160)">
+      <stop stop-color="#D06A1D" stop-opacity="0.26"/>
+      <stop offset="1" stop-color="#D06A1D" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="violetGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1320 1040) rotate(-15) scale(340 180)">
+      <stop stop-color="#6D5CFF" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#6D5CFF" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="shellShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="28" stdDeviation="24" flood-color="#000000" flood-opacity="0.42"/>
+    </filter>
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="16" stdDeviation="18" flood-color="#000000" flood-opacity="0.28"/>
+    </filter>
+    <linearGradient id="rowActive" x1="0" y1="0" x2="1" y2="0">
+      <stop stop-color="rgba(255,255,255,0.12)"/>
+      <stop offset="1" stop-color="rgba(255,255,255,0.04)"/>
+    </linearGradient>
+    <linearGradient id="paper" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#F8F5F0"/>
+      <stop offset="1" stop-color="#EEE7DE"/>
+    </linearGradient>
+    <style>
+      .kicker { font: 700 12px 'Noto Sans KR', sans-serif; fill: #82899A; letter-spacing: 0.16em; }
+      .title { font: 800 28px 'Noto Sans KR', sans-serif; fill: #F4F7FB; letter-spacing: -0.03em; }
+      .hero { font: 800 44px 'Noto Sans KR', sans-serif; fill: #F5F7FC; letter-spacing: -0.05em; }
+      .body { font: 500 16px 'Noto Sans KR', sans-serif; fill: #A3AABC; }
+      .row { font: 600 16px 'Noto Sans KR', sans-serif; fill: #E9EDF5; }
+      .meta { font: 500 13px 'Noto Sans KR', sans-serif; fill: #8C95A8; }
+      .tag { font: 600 12px 'Noto Sans KR', sans-serif; fill: #9BA4B6; }
+      .button { font: 700 14px 'Noto Sans KR', sans-serif; fill: #0B0D12; }
+      .buttonGhost { font: 700 14px 'Noto Sans KR', sans-serif; fill: #F0F3F8; }
+    </style>
+  </defs>
+
+  <rect width="1600" height="1220" fill="url(#bg)"/>
+  <rect width="1600" height="1220" fill="url(#redBloom)"/>
+  <rect width="1600" height="1220" fill="url(#amberBloom)"/>
+  <rect width="1600" height="1220" fill="url(#violetGlow)"/>
+
+  <text x="72" y="64" class="title">Raycast Command Shell Rough</text>
+  <text x="72" y="94" class="body">cards가 아니라 command palette를 앱 화면에 번역하는 방향</text>
+
+  <!-- LOGIN -->
+  <g transform="translate(72 134)">
+    <rect width="690" height="450" rx="30" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.06)" filter="url(#shellShadow)"/>
+    <text x="24" y="30" class="kicker">PC LOGIN / RAYCAST-LIKE</text>
+
+    <rect x="42" y="54" width="606" height="302" rx="22" fill="rgba(8,10,14,0.84)" stroke="rgba(255,255,255,0.08)"/>
+    <rect x="43" y="55" width="604" height="300" rx="21" fill="url(#redBloom)" opacity="0.64"/>
+
+    <text x="64" y="100" class="body" style="font-size:15px;">Search for resumes and commands...</text>
+    <line x1="64" y1="122" x2="626" y2="122" stroke="rgba(255,255,255,0.08)"/>
+
+    <text x="64" y="160" class="kicker" style="letter-spacing:0.04em;">START</text>
+
+    <rect x="58" y="176" width="574" height="44" rx="10" fill="rgba(255,255,255,0.10)"/>
+    <circle cx="82" cy="198" r="9" fill="#F08C86"/>
+    <text x="102" y="204" class="row">Google 계정으로 시작</text>
+    <text x="540" y="204" class="tag">Command</text>
+
+    <rect x="58" y="228" width="574" height="44" rx="10" fill="rgba(255,255,255,0.03)"/>
+    <circle cx="82" cy="250" r="9" fill="#E8A978"/>
+    <text x="102" y="256" class="row" style="fill:#CDD5E3;">저장된 이력서 이어쓰기</text>
+    <text x="554" y="256" class="tag">Recent</text>
+
+    <rect x="58" y="280" width="574" height="44" rx="10" fill="rgba(255,255,255,0.03)"/>
+    <circle cx="82" cy="302" r="9" fill="#6D5CFF"/>
+    <text x="102" y="308" class="row" style="fill:#B7C0D2;">PDF 내보내기</text>
+    <text x="567" y="308" class="tag">Action</text>
+
+    <text x="42" y="392" class="hero">로그인도 하나의</text>
+    <text x="42" y="438" class="hero">커맨드처럼</text>
+  </g>
+
+  <!-- LIST -->
+  <g transform="translate(836 134)">
+    <rect width="692" height="450" rx="30" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.06)" filter="url(#shellShadow)"/>
+    <text x="24" y="30" class="kicker">PC LIST / COMMAND LIST</text>
+
+    <rect x="42" y="54" width="608" height="338" rx="22" fill="rgba(8,10,14,0.86)" stroke="rgba(255,255,255,0.08)"/>
+    <rect x="43" y="55" width="606" height="336" rx="21" fill="url(#redBloom)" opacity="0.64"/>
+
+    <text x="64" y="100" class="body" style="font-size:15px;">Search resumes, templates, and actions...</text>
+    <line x1="64" y1="122" x2="628" y2="122" stroke="rgba(255,255,255,0.08)"/>
+    <text x="64" y="158" class="kicker" style="letter-spacing:0.04em;">RECENT</text>
+
+    <rect x="58" y="174" width="576" height="48" rx="10" fill="rgba(255,255,255,0.11)"/>
+    <circle cx="84" cy="198" r="10" fill="#E8A978"/>
+    <text x="106" y="204" class="row">박규태-이력서</text>
+    <text x="280" y="204" class="meta">가장 최근 문서</text>
+    <text x="554" y="204" class="tag">Open</text>
+
+    <rect x="58" y="228" width="576" height="44" rx="10" fill="rgba(255,255,255,0.03)"/>
+    <circle cx="84" cy="250" r="9" fill="#7AC097"/>
+    <text x="106" y="256" class="row" style="fill:#D3DAE7;">프론트엔드 이력서</text>
+    <text x="260" y="256" class="meta">최근 수정 3월 23일</text>
+    <text x="572" y="256" class="tag">Resume</text>
+
+    <rect x="58" y="280" width="576" height="44" rx="10" fill="rgba(255,255,255,0.03)"/>
+    <circle cx="84" cy="302" r="9" fill="#6D5CFF"/>
+    <text x="106" y="308" class="row" style="fill:#CDD5E3;">기획 이력서</text>
+    <text x="222" y="308" class="meta">최근 수정 3월 20일</text>
+    <text x="572" y="308" class="tag">Resume</text>
+
+    <rect x="58" y="332" width="576" height="44" rx="10" fill="rgba(255,255,255,0.03)"/>
+    <circle cx="84" cy="354" r="9" fill="#F08C86"/>
+    <text x="106" y="360" class="row" style="fill:#B7C0D2;">새 이력서 만들기</text>
+    <text x="574" y="360" class="tag">Create</text>
+
+    <text x="42" y="420" class="body">핵심은 카드 그리드보다 빠른 열기 목록이다</text>
+  </g>
+
+  <!-- EDITOR -->
+  <g transform="translate(72 640)">
+    <rect width="980" height="500" rx="30" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.06)" filter="url(#shellShadow)"/>
+    <text x="24" y="30" class="kicker">PC EDITOR / COMMAND RAIL + PAPER</text>
+
+    <rect x="32" y="50" width="916" height="58" rx="20" fill="rgba(14,18,26,0.88)" stroke="rgba(255,255,255,0.08)"/>
+    <text x="58" y="85" class="row">박규태-이력서</text>
+    <rect x="214" y="66" width="72" height="26" rx="13" fill="rgba(255,255,255,0.07)"/>
+    <text x="236" y="83" class="tag">저장됨</text>
+    <rect x="742" y="62" width="72" height="34" rx="16" fill="#E8A978"/>
+    <text x="768" y="84" class="button">저장</text>
+    <rect x="824" y="62" width="56" height="34" rx="16" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)"/>
+    <text x="842" y="84" class="buttonGhost">PDF</text>
+    <rect x="888" y="62" width="40" height="34" rx="16" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)"/>
+    <text x="903" y="84" class="buttonGhost">⋯</text>
+
+    <rect x="32" y="132" width="340" height="336" rx="22" fill="rgba(8,10,14,0.86)" stroke="rgba(255,255,255,0.08)"/>
+    <rect x="33" y="133" width="338" height="334" rx="21" fill="url(#redBloom)" opacity="0.5"/>
+    <text x="54" y="164" class="body">Jump to sections or actions...</text>
+    <line x1="54" y1="184" x2="350" y2="184" stroke="rgba(255,255,255,0.08)"/>
+    <text x="54" y="214" class="kicker" style="letter-spacing:0.04em;">SECTIONS</text>
+
+    <rect x="48" y="228" width="308" height="40" rx="10" fill="rgba(255,255,255,0.10)"/>
+    <text x="70" y="253" class="row">기본 정보</text>
+    <text x="298" y="253" class="tag">Edit</text>
+
+    <rect x="48" y="274" width="308" height="40" rx="10" fill="rgba(255,255,255,0.03)"/>
+    <text x="70" y="299" class="row" style="fill:#CBD3E1;">경력</text>
+    <text x="298" y="299" class="tag">Edit</text>
+
+    <rect x="48" y="320" width="308" height="40" rx="10" fill="rgba(255,255,255,0.03)"/>
+    <text x="70" y="345" class="row" style="fill:#CBD3E1;">프로젝트</text>
+    <text x="298" y="345" class="tag">Edit</text>
+
+    <rect x="48" y="366" width="308" height="40" rx="10" fill="rgba(255,255,255,0.03)"/>
+    <text x="70" y="391" class="row" style="fill:#CBD3E1;">학력</text>
+    <text x="298" y="391" class="tag">Edit</text>
+
+    <circle cx="690" cy="306" r="130" fill="rgba(110,124,255,0.12)"/>
+    <g filter="url(#softShadow)">
+      <rect x="468" y="164" width="396" height="270" rx="24" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.08)"/>
+    </g>
+    <g filter="url(#shellShadow)">
+      <rect x="540" y="132" width="264" height="336" rx="20" fill="url(#paper)"/>
+      <rect x="574" y="166" width="110" height="10" rx="5" fill="#343A47"/>
+      <rect x="574" y="184" width="64" height="8" rx="4" fill="#B9C1CF"/>
+      <circle cx="744" cy="178" r="18" fill="#E7EAF0"/>
+      <rect x="574" y="220" width="164" height="6" rx="3" fill="#D6DCE6"/>
+      <rect x="574" y="232" width="176" height="6" rx="3" fill="#D6DCE6"/>
+      <rect x="574" y="260" width="176" height="64" rx="14" fill="#ECEFF4"/>
+      <rect x="590" y="278" width="74" height="8" rx="4" fill="#3A4250"/>
+      <rect x="590" y="296" width="124" height="6" rx="3" fill="#CED6E1"/>
+      <rect x="590" y="308" width="132" height="6" rx="3" fill="#CED6E1"/>
+      <rect x="574" y="346" width="80" height="6" rx="3" fill="#D6DCE6"/>
+      <rect x="574" y="360" width="158" height="6" rx="3" fill="#D6DCE6"/>
+      <rect x="574" y="374" width="144" height="6" rx="3" fill="#D6DCE6"/>
+      <rect x="574" y="402" width="96" height="6" rx="3" fill="#D6DCE6"/>
+    </g>
+  </g>
+
+  <!-- MOBILE -->
+  <g transform="translate(1090 640)">
+    <rect width="438" height="500" rx="30" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.06)" filter="url(#shellShadow)"/>
+    <text x="24" y="30" class="kicker">MOBILE / SINGLE SHEET FEEL</text>
+
+    <rect x="32" y="52" width="374" height="54" rx="18" fill="rgba(14,18,26,0.88)" stroke="rgba(255,255,255,0.08)"/>
+    <text x="54" y="86" class="row">← 박규태-이력서</text>
+    <text x="300" y="86" class="meta">저장됨</text>
+    <text x="370" y="86" class="row">⋯</text>
+
+    <rect x="32" y="122" width="200" height="40" rx="20" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.08)"/>
+    <rect x="36" y="126" width="94" height="32" rx="16" fill="#E8A978"/>
+    <text x="67" y="147" class="button">편집</text>
+    <text x="156" y="147" class="buttonGhost" style="font-size:13px;">미리보기</text>
+
+    <rect x="32" y="184" width="374" height="212" rx="22" fill="rgba(8,10,14,0.86)" stroke="rgba(255,255,255,0.08)"/>
+    <rect x="33" y="185" width="372" height="210" rx="21" fill="url(#redBloom)" opacity="0.52"/>
+    <text x="54" y="214" class="body">Edit current section...</text>
+    <line x1="54" y1="230" x2="384" y2="230" stroke="rgba(255,255,255,0.08)"/>
+    <rect x="48" y="248" width="342" height="40" rx="10" fill="rgba(255,255,255,0.10)"/>
+    <text x="68" y="273" class="row">기본 정보</text>
+    <rect x="48" y="294" width="342" height="40" rx="10" fill="rgba(255,255,255,0.03)"/>
+    <text x="68" y="319" class="row" style="fill:#CDD5E3;">경력</text>
+    <rect x="48" y="340" width="342" height="40" rx="10" fill="rgba(255,255,255,0.03)"/>
+    <text x="68" y="365" class="row" style="fill:#CDD5E3;">프로젝트</text>
+
+    <rect x="32" y="416" width="374" height="56" rx="22" fill="rgba(20,26,36,0.90)" stroke="rgba(255,255,255,0.08)"/>
+    <rect x="40" y="424" width="154" height="40" rx="18" fill="#E8A978"/>
+    <text x="101" y="449" class="button">저장</text>
+    <rect x="202" y="424" width="118" height="40" rx="18" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)"/>
+    <text x="238" y="449" class="buttonGhost" style="font-size:13px;">미리보기</text>
+    <rect x="328" y="424" width="70" height="40" rx="18" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)"/>
+    <text x="351" y="449" class="buttonGhost" style="font-size:13px;">PDF</text>
+  </g>
+</svg>

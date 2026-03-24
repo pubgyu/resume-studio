@@ -1,0 +1,199 @@
+{
+  "meta": {
+    "name": "Dark Command Workspace UI Tokens",
+    "version": "1.0.0",
+    "product": "Resume Room",
+    "checkedAt": "2026-03-24",
+    "basedOn": "docs/dark-command-workspace-mockup-v1.md"
+  },
+  "fonts": {
+    "family": "Noto Sans KR",
+    "heroWeight": 800,
+    "titleWeight": 700,
+    "bodyWeight": 500,
+    "metaWeight": 500
+  },
+  "budgets": {
+    "loginSupportCardsMax": 0,
+    "listSidebarPanelsMax": 0,
+    "headerVisibleActionsMax": 4,
+    "topbarPrimaryActionsMax": 1,
+    "mobilePersistentActionsMax": 3,
+    "screenStrongSurfacesMax": 4,
+    "chipClusterMax": 3
+  },
+  "breakpoints": {
+    "desktopWide": "1280px",
+    "desktop": "1101px",
+    "tablet": "1100px",
+    "mobile": "720px",
+    "mobileCompact": "520px"
+  },
+  "colors": {
+    "canvas": "#0D1016",
+    "canvasElevated": "#10151E",
+    "surface": "#141922",
+    "surfaceStrong": "#1A202B",
+    "surfaceElevated": "#202735",
+    "surfaceGlass": "rgba(20, 26, 36, 0.76)",
+    "surfaceGlassStrong": "rgba(20, 26, 36, 0.88)",
+    "line": "rgba(255, 255, 255, 0.08)",
+    "lineStrong": "rgba(255, 255, 255, 0.14)",
+    "textPrimary": "#F5F7FB",
+    "textSecondary": "#C4CBD8",
+    "textTertiary": "#98A1B3",
+    "paper": "#F7F4EE",
+    "paperLine": "rgba(20, 26, 36, 0.08)",
+    "accent": "#E8A978",
+    "accentDeep": "#B97B4B",
+    "accentSoft": "rgba(232, 169, 120, 0.12)",
+    "accentContrast": "#0F141C",
+    "glowBlue": "rgba(110, 124, 255, 0.12)",
+    "glowBlueStrong": "rgba(78, 144, 255, 0.16)",
+    "focusRing": "rgba(110, 124, 255, 0.28)",
+    "focusGlow": "rgba(110, 124, 255, 0.18)",
+    "success": "#7AC097",
+    "danger": "#F08C86",
+    "dangerSoft": "rgba(240, 140, 134, 0.12)"
+  },
+  "spacing": {
+    "2xs": "4px",
+    "xs": "6px",
+    "sm": "8px",
+    "md": "12px",
+    "lg": "16px",
+    "xl": "20px",
+    "2xl": "24px",
+    "3xl": "28px",
+    "4xl": "32px",
+    "5xl": "40px"
+  },
+  "radius": {
+    "topbar": "22px",
+    "panel": "22px",
+    "card": "18px",
+    "compactCard": "16px",
+    "paper": "24px",
+    "control": "16px",
+    "pill": "999px"
+  },
+  "shadow": {
+    "glass": "0 14px 32px rgba(0, 0, 0, 0.24)",
+    "panel": "0 18px 36px rgba(0, 0, 0, 0.20)",
+    "paper": "0 24px 56px rgba(0, 0, 0, 0.26)",
+    "dock": "0 -10px 28px rgba(0, 0, 0, 0.22)"
+  },
+  "blur": {
+    "topbar": "16px",
+    "dock": "18px",
+    "modal": "20px"
+  },
+  "layout": {
+    "shellMaxWidth": "1440px",
+    "shellPaddingDesktopTop": "20px",
+    "shellPaddingDesktopX": "24px",
+    "shellPaddingMobileX": "16px",
+    "sectionGapDesktop": "28px",
+    "sectionGapMobile": "14px",
+    "loginCardWidthDesktop": "340px",
+    "editorRailWidth": "416px",
+    "previewPaperMaxWidth": "860px",
+    "documentGridColumnsDesktop": 2,
+    "documentGridColumnsMobile": 1
+  },
+  "components": {
+    "topbar": {
+      "heightDesktop": "64px",
+      "heightMobile": "56px",
+      "paddingDesktop": "12px 16px",
+      "paddingMobile": "10px 14px",
+      "quickActionWidthMin": "220px",
+      "quickActionWidthMax": "280px"
+    },
+    "login": {
+      "heroLineCountMax": 2,
+      "descriptionLineCountMax": 2,
+      "chipCountMax": 3
+    },
+    "recentWorkCard": {
+      "minHeightDesktop": "112px",
+      "padding": "20px"
+    },
+    "documentCardDesktop": {
+      "minHeight": "180px",
+      "padding": "16px",
+      "thumbnailWidthRatio": 0.24
+    },
+    "documentCardMobile": {
+      "minHeight": "96px",
+      "padding": "14px",
+      "thumbnailWidthRatio": 0.28
+    },
+    "editorRail": {
+      "padding": "18px",
+      "sectionGap": "12px",
+      "cardPadding": "14px"
+    },
+    "previewStage": {
+      "paddingTop": "12px",
+      "paddingSide": "20px",
+      "haloOpacity": 0.12,
+      "haloRadius": "88px"
+    },
+    "segmentedControl": {
+      "height": "40px",
+      "radius": "999px"
+    },
+    "bottomDock": {
+      "minHeight": "62px",
+      "padding": "10px 12px",
+      "safeAreaBottom": "env(safe-area-inset-bottom, 0px)"
+    },
+    "button": {
+      "heightDesktop": "42px",
+      "heightMobile": "50px",
+      "paddingXDesktop": "16px",
+      "paddingXMobile": "18px"
+    },
+    "input": {
+      "heightDesktop": "44px",
+      "heightMobile": "46px",
+      "paddingX": "14px"
+    },
+    "touch": {
+      "minimumTarget": "44px"
+    }
+  },
+  "typeScale": {
+    "hero": {
+      "size": "56px",
+      "weight": 800,
+      "tracking": "-0.05em"
+    },
+    "pageTitle": {
+      "size": "32px",
+      "weight": 800,
+      "tracking": "-0.03em"
+    },
+    "cardTitle": {
+      "size": "24px",
+      "weight": 700,
+      "tracking": "-0.02em"
+    },
+    "body": {
+      "size": "16px",
+      "weight": 500,
+      "tracking": "0"
+    },
+    "meta": {
+      "size": "12px",
+      "weight": 500,
+      "tracking": "0.01em"
+    },
+    "eyebrow": {
+      "size": "12px",
+      "weight": 700,
+      "tracking": "0.14em"
+    }
+  }
+}

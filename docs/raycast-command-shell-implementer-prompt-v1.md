@@ -1,0 +1,3 @@
+# Raycast Command Shell Implementer Prompt v1
+
+`docs/raycast-command-shell-mockup-v1.md`, `docs/raycast-command-shell-ui-token-delta-v1.md`, `docs/raycast-command-shell-ui-tokens.json`, `docs/mockups/raycast-command-shell-rough-v1.svg`만 기준으로 기존 기능은 유지한 채 UI를 `Raycast Command Shell` 컨셉으로 다시 구성하라; 이전 warm-glass와 dark-command 기준은 모두 무시하고, card dashboard 구조를 버린 뒤 shell-first 구조로 바꾸며, PC login/list는 `search-like shell + active row + passive rows + right-side short action tag` 중심으로 설계하고, editor는 `section command shell + floating paper` 2축으로 만들며, 모바일도 card 반복 대신 single list shell과 segmented control, sticky bottom dock를 유지하되 row list 위계를 우선하고 support panel이나 설명용 카드 스택은 추가하지 말라.

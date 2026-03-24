@@ -8,6 +8,7 @@ import {
   type ResumePresentation,
   type ResumeSectionOrderKey,
   type ResumeSectionVisibility,
+  type ResumeVisibilityKey,
   type ResumeTemplateId
 } from "./types";
 
@@ -104,8 +105,7 @@ export function normalizeResumePresentation(value: unknown): ResumePresentation 
     sectionOrder: [...normalizedSectionOrder, ...missingSectionOrder],
     sectionVisibility: RESUME_VISIBILITY_KEYS.reduce(
       (accumulator, key) => {
-        accumulator[key] =
-          typeof rawVisibility[key] === "boolean" ? Boolean(rawVisibility[key]) : true;
+        accumulator[key] = readSectionVisibility(rawVisibility, key);
         return accumulator;
       },
       {} as ResumeSectionVisibility
@@ -119,7 +119,7 @@ export function serializeResumeDocument(document: ResumeDraftDocument) {
     presentation: normalizeResumePresentation(document.presentation),
     resume: document.resume,
     resumeName: normalizeResumeName(document.resumeName),
-    version: 3
+    version: 4
   });
 }
 
@@ -156,4 +156,32 @@ function isResumeSectionOrderKey(value: unknown): value is ResumeSectionOrderKey
     typeof value === "string" &&
     RESUME_SECTION_ORDER_KEYS.includes(value as ResumeSectionOrderKey)
   );
+}
+
+function readSectionVisibility(
+  rawVisibility: Record<string, unknown>,
+  key: ResumeVisibilityKey
+) {
+  const directValue = rawVisibility[key];
+
+  if (typeof directValue === "boolean") {
+    return directValue;
+  }
+
+  const legacyFallbackMap: Partial<Record<ResumeVisibilityKey, string[]>> = {
+    strengths: ["skills"],
+    summary: ["basic"],
+    totalExperience: ["experience"]
+  };
+  const fallbackKeys = legacyFallbackMap[key] ?? [];
+
+  for (const fallbackKey of fallbackKeys) {
+    const fallbackValue = rawVisibility[fallbackKey];
+
+    if (typeof fallbackValue === "boolean") {
+      return fallbackValue;
+    }
+  }
+
+  return true;
 }

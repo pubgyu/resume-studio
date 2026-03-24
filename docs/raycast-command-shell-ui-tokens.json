@@ -1,0 +1,155 @@
+{
+  "meta": {
+    "name": "Raycast Command Shell UI Tokens",
+    "version": "1.0.0",
+    "product": "Resume Room",
+    "checkedAt": "2026-03-24",
+    "basedOn": "docs/raycast-command-shell-mockup-v1.md"
+  },
+  "budgets": {
+    "loginStrongSurfacesMax": 2,
+    "listStrongSurfacesMax": 2,
+    "editorStrongSurfacesMax": 3,
+    "mobileStrongSurfacesMax": 2,
+    "supportPanelsMax": 0,
+    "visibleHeaderActionsMax": 3,
+    "rowTagWordCountMax": 1
+  },
+  "fonts": {
+    "family": "Noto Sans KR",
+    "heroWeight": 800,
+    "titleWeight": 800,
+    "rowWeight": 600,
+    "bodyWeight": 500
+  },
+  "breakpoints": {
+    "desktopWide": "1280px",
+    "desktop": "1101px",
+    "tablet": "1100px",
+    "mobile": "720px",
+    "mobileCompact": "520px"
+  },
+  "colors": {
+    "canvas": "#0A0B10",
+    "canvasElevated": "#0E1017",
+    "shell": "rgba(8, 10, 14, 0.86)",
+    "shellSecondary": "rgba(14, 18, 26, 0.88)",
+    "shellLine": "rgba(255, 255, 255, 0.08)",
+    "rowActive": "rgba(255, 255, 255, 0.10)",
+    "rowIdle": "rgba(255, 255, 255, 0.03)",
+    "textPrimary": "#F4F7FB",
+    "textSecondary": "#C5CCDA",
+    "textTertiary": "#8C95A8",
+    "tag": "#9BA4B6",
+    "accent": "#E8A978",
+    "accentDeep": "#D06A1D",
+    "accentContrast": "#0B0D12",
+    "redBloom": "rgba(158, 31, 24, 0.55)",
+    "amberBloom": "rgba(208, 106, 29, 0.26)",
+    "violetGlow": "rgba(109, 92, 255, 0.18)",
+    "paper": "#F8F5F0",
+    "paperBottom": "#EEE7DE",
+    "paperInk": "#343A47",
+    "paperMuted": "#D6DCE6",
+    "success": "#7AC097",
+    "danger": "#F08C86"
+  },
+  "spacing": {
+    "2xs": "4px",
+    "xs": "6px",
+    "sm": "8px",
+    "md": "12px",
+    "lg": "16px",
+    "xl": "20px",
+    "2xl": "24px",
+    "3xl": "28px"
+  },
+  "radius": {
+    "outerFrame": "30px",
+    "shell": "22px",
+    "utilityShell": "18px",
+    "row": "10px",
+    "dock": "22px",
+    "paper": "20px",
+    "pill": "999px"
+  },
+  "shadow": {
+    "shell": "0 28px 48px rgba(0, 0, 0, 0.42)",
+    "soft": "0 16px 36px rgba(0, 0, 0, 0.28)",
+    "paper": "0 24px 48px rgba(0, 0, 0, 0.26)"
+  },
+  "layout": {
+    "shellMaxWidthDesktop": "620px",
+    "utilityShellHeightDesktop": "60px",
+    "utilityShellHeightMobile": "54px",
+    "mainShellPadding": "16px",
+    "rowHeightDesktop": "44px",
+    "rowHeightMobile": "40px",
+    "rowGap": "8px",
+    "sectionGapDesktop": "24px",
+    "sectionGapMobile": "12px",
+    "editorRailWidth": "340px",
+    "previewPaperWidthMockup": "264px"
+  },
+  "components": {
+    "rows": {
+      "iconSize": "18px",
+      "tagSize": "12px",
+      "metaSize": "13px"
+    },
+    "login": {
+      "heroLineCountMax": 2,
+      "passiveRowsMax": 2
+    },
+    "list": {
+      "activeRowsMax": 1,
+      "passiveRowsMax": 4
+    },
+    "editor": {
+      "visibleTopActionsMax": 3,
+      "sectionRowsMaxVisible": 5
+    },
+    "mobile": {
+      "bottomDockMinHeight": "56px",
+      "bottomDockActionsMax": 3,
+      "safeAreaBottom": "env(safe-area-inset-bottom, 0px)"
+    }
+  },
+  "typeScale": {
+    "hero": {
+      "size": "44px",
+      "weight": 800,
+      "tracking": "-0.05em"
+    },
+    "title": {
+      "size": "28px",
+      "weight": 800,
+      "tracking": "-0.03em"
+    },
+    "body": {
+      "size": "16px",
+      "weight": 500,
+      "tracking": "0"
+    },
+    "row": {
+      "size": "16px",
+      "weight": 600,
+      "tracking": "0"
+    },
+    "meta": {
+      "size": "13px",
+      "weight": 500,
+      "tracking": "0"
+    },
+    "tag": {
+      "size": "12px",
+      "weight": 600,
+      "tracking": "0"
+    },
+    "kicker": {
+      "size": "12px",
+      "weight": 700,
+      "tracking": "0.16em"
+    }
+  }
+}

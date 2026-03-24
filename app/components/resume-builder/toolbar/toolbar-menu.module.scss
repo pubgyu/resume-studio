@@ -1,47 +1,49 @@
 .menu {
   position: relative;
-  z-index: 24;
+  z-index: 40;
 }
 
 .trigger {
-  min-width: 2.75rem;
+  min-width: 2.5rem;
 }
 
 .panel {
   position: absolute;
-  top: calc(100% + 0.45rem);
+  bottom: calc(100% + 0.5rem);
+  top: auto;
   right: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.32rem;
-  min-width: 12.8rem;
-  padding: 0.42rem;
-  border: 1px solid var(--line);
-  border-radius: 1.1rem;
-  background: var(--panel-strong);
-  box-shadow: var(--shadow);
-  z-index: 32;
+  gap: 0.28rem;
+  min-width: 12rem;
+  padding: 0.4rem;
+  border: 1px solid var(--strict-line, var(--line));
+  border-radius: 1rem;
+  background: var(--strict-shell-elevated, color-mix(in srgb, var(--panel) 96%, transparent));
+  box-shadow: var(--strict-panel-shadow, var(--shadow-soft));
+  z-index: 48;
+  backdrop-filter: blur(16px);
 }
 
 .item {
   width: 100%;
   justify-content: flex-start;
-  border-radius: 0.82rem;
-  font-size: 0.82rem;
+  border-radius: 0.78rem;
+  font-size: 0.78rem;
   line-height: 1.2;
   text-align: left;
   white-space: nowrap;
 }
 
 .danger {
-  color: #a14f44;
+  color: var(--strict-danger, #a14f44);
 
   :global(body[data-theme="dark"]) & {
-    color: #e1a9a0;
+    color: var(--strict-danger, #e1a9a0);
   }
 }
 
 :global(body[data-theme="dark"]) .panel {
-  background: var(--panel-strong);
-  box-shadow: var(--shadow);
+  background: var(--strict-shell-elevated, var(--panel-strong));
+  box-shadow: var(--strict-panel-shadow, var(--shadow));
 }

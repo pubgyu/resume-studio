@@ -1,0 +1,117 @@
+{
+  "meta": {
+    "name": "Raycast Native Workspace UI Tokens",
+    "version": "1.0.0",
+    "product": "Resume Room",
+    "checkedAt": "2026-03-24",
+    "basedOn": "docs/raycast-native-workspace-spec-v1.md"
+  },
+  "fonts": {
+    "family": "Noto Sans KR",
+    "weights": {
+      "hero": 800,
+      "title": 700,
+      "row": 600,
+      "body": 500
+    }
+  },
+  "colors": {
+    "canvas": "#0A0B10",
+    "canvasElevated": "#0E1017",
+    "panel": "#121720",
+    "panelElevated": "#171D28",
+    "panelLine": "rgba(255, 255, 255, 0.08)",
+    "panelLineStrong": "rgba(255, 255, 255, 0.14)",
+    "rowActive": "rgba(255, 255, 255, 0.08)",
+    "rowHover": "rgba(255, 255, 255, 0.05)",
+    "textPrimary": "#F4F7FB",
+    "textSecondary": "#C5CCDA",
+    "textTertiary": "#8C95A8",
+    "accent": "#E8A978",
+    "accentDeep": "#D06A1D",
+    "accentContrast": "#0B0D12",
+    "redBloom": "rgba(158, 31, 24, 0.26)",
+    "violetGlow": "rgba(109, 92, 255, 0.12)",
+    "paper": "#F8F5F0",
+    "paperBottom": "#EEE7DE",
+    "paperInk": "#343A47",
+    "paperMuted": "#D6DCE6",
+    "success": "#7AC097",
+    "danger": "#F08C86"
+  },
+  "spacing": {
+    "xs": "6px",
+    "sm": "8px",
+    "md": "12px",
+    "lg": "16px",
+    "xl": "20px",
+    "2xl": "24px",
+    "3xl": "28px",
+    "4xl": "32px"
+  },
+  "radius": {
+    "panel": "20px",
+    "compactPanel": "16px",
+    "row": "12px",
+    "button": "16px",
+    "dock": "20px",
+    "paper": "18px",
+    "pill": "999px"
+  },
+  "shadow": {
+    "panel": "0 18px 36px rgba(0, 0, 0, 0.22)",
+    "paper": "0 24px 48px rgba(0, 0, 0, 0.24)",
+    "dock": "0 -10px 24px rgba(0, 0, 0, 0.22)"
+  },
+  "layout": {
+    "shellMaxWidth": "1440px",
+    "desktopGutter": "24px",
+    "mobileGutter": "16px",
+    "utilityBarHeight": "56px",
+    "listLeftRatio": 0.58,
+    "listRightRatio": 0.42,
+    "editorRailWidthMin": "320px",
+    "editorRailWidthMax": "360px",
+    "bottomDockHeight": "58px"
+  },
+  "typeScale": {
+    "loginHero": {
+      "size": "40px",
+      "weight": 800,
+      "tracking": "-0.05em"
+    },
+    "pageTitle": {
+      "size": "28px",
+      "weight": 700,
+      "tracking": "-0.03em"
+    },
+    "panelTitle": {
+      "size": "20px",
+      "weight": 700,
+      "tracking": "-0.02em"
+    },
+    "rowLabel": {
+      "size": "15px",
+      "weight": 600,
+      "tracking": "0"
+    },
+    "utility": {
+      "size": "13px",
+      "weight": 500,
+      "tracking": "0"
+    },
+    "meta": {
+      "size": "12px",
+      "weight": 500,
+      "tracking": "0.01em"
+    }
+  },
+  "budgets": {
+    "supportCardsMax": 0,
+    "loginChipsMax": 3,
+    "headerVisibleActionsMax": 3,
+    "mobileDockActionsMax": 3,
+    "desktopStrongSurfacesMax": 4,
+    "mobileStrongSurfacesMax": 3
+  }
+}

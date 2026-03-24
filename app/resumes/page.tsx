@@ -1,15 +1,11 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { redirect } from "next/navigation";
 
-import { SignOutButton } from "@/app/components/auth/sign-out-button";
 import { DraftCleanupOnMount } from "@/app/components/resume-builder/draft-cleanup-on-mount";
-import { ResumeListCard } from "@/app/components/resumes/resume-list-card";
-import { Button } from "@/app/components/ui/button";
+import { ResumeListWorkspace } from "@/app/components/resumes/resume-list-workspace";
 import { SupabaseSetupNotice } from "@/app/components/setup/supabase-setup-notice";
-import { AppThemeToggle } from "@/app/components/theme/app-theme-toggle";
 import { createNoIndexMetadata } from "@/lib/site-config";
-import { getCurrentUser, listUserResumes } from "@/lib/resumes/server";
+import { getCurrentUser, listUserResumeRecords } from "@/lib/resumes/server";
 import { hasSupabaseEnv } from "@/lib/supabase/env";
 
 export const dynamic = "force-dynamic";
@@ -29,53 +25,13 @@ export default async function ResumesPage() {
     redirect("/login");
   }
 
-  const resumes = await listUserResumes(user.id);
+  const resumes = await listUserResumeRecords(user.id);
 
   return (
-    <main className="studio-page">
+    <main className="studio-page resumes-page">
       <DraftCleanupOnMount />
       <section className="studio-shell resumes-shell">
-        <header className="studio-topbar resumes-topbar">
-          <div className="hero-copy">
-            <p className="eyebrow topbar-kicker">Resume Room</p>
-            <h1 className="page-title">작업 중인 이력서</h1>
-            <p className="intro">
-              저장된 이력서를 다시 열거나 새 이력서를 만들어 계속 관리할 수 있습니다.
-            </p>
-            <div className="topbar-meta">
-              <span className="topbar-meta-badge">{resumes.length}개 저장됨</span>
-              <span className="topbar-meta-text">문서 서랍장에서 최근 작업을 이어갈 수 있습니다.</span>
-            </div>
-          </div>
-
-          <div className="toolbar toolbar-clustered">
-            <div className="toolbar-group toolbar-group-secondary">
-              <AppThemeToggle />
-              <SignOutButton />
-            </div>
-            <div className="toolbar-group toolbar-group-primary">
-              <Button asChild className="resumes-new-button" type="button" variant="primary">
-                <Link href="/resumes/new?fresh=1">새 이력서</Link>
-              </Button>
-            </div>
-          </div>
-        </header>
-
-        {resumes.length === 0 ? (
-          <section className="panel-card resumes-empty">
-            <h2>아직 저장된 이력서가 없습니다</h2>
-            <p>첫 이력서를 만들면 여기서 카드 형식으로 다시 열 수 있습니다.</p>
-            <Button asChild className="resumes-new-button" type="button" variant="primary">
-              <Link href="/resumes/new?fresh=1">첫 이력서 만들기</Link>
-            </Button>
-          </section>
-        ) : (
-          <section className="resume-list-grid">
-            {resumes.map((resume) => (
-              <ResumeListCard key={resume.id} resume={resume} />
-            ))}
-          </section>
-        )}
+        <ResumeListWorkspace resumes={resumes} />
       </section>
     </main>
   );

@@ -1,0 +1,103 @@
+<svg width="1600" height="1080" viewBox="0 0 1600 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="redGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(280 860) rotate(-8) scale(520 360)">
+      <stop offset="0%" stop-color="#A13128" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#A13128" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="violetGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1290 160) rotate(10) scale(390 260)">
+      <stop offset="0%" stop-color="#7067FF" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#7067FF" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="160%">
+      <feDropShadow dx="0" dy="24" stdDeviation="28" flood-color="#000000" flood-opacity="0.38"/>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="1080" fill="#06070B"/>
+  <rect width="1600" height="1080" fill="url(#redGlow)"/>
+  <rect width="1600" height="1080" fill="url(#violetGlow)"/>
+
+  <text x="84" y="70" fill="#F3F5F8" font-size="28" font-family="Noto Sans KR, sans-serif" font-weight="700">Raycast Strict Rough v3</text>
+  <text x="84" y="100" fill="#8E97A9" font-size="16" font-family="Noto Sans KR, sans-serif">warm fill 제거, row-first, bottom action bar, utility window 기준</text>
+
+  <g filter="url(#shadow)">
+    <rect x="80" y="150" width="620" height="300" rx="24" fill="#0E1117" stroke="#252C37"/>
+    <rect x="80" y="150" width="620" height="50" rx="24" fill="rgba(255,255,255,0.02)"/>
+    <text x="112" y="180" fill="#C7CFDA" font-size="12" font-family="Noto Sans KR, sans-serif" font-weight="700" letter-spacing="2">LOGIN</text>
+    <text x="112" y="254" fill="#F3F5F8" font-size="30" font-family="Noto Sans KR, sans-serif" font-weight="700">이력서를 저장하고</text>
+    <text x="112" y="288" fill="#F3F5F8" font-size="30" font-family="Noto Sans KR, sans-serif" font-weight="700">바로 이어 쓰는 작업실</text>
+    <text x="112" y="326" fill="#8E97A9" font-size="14" font-family="Noto Sans KR, sans-serif">검색창이나 fake row 없이 간결한 intro만 유지</text>
+    <rect x="420" y="222" width="244" height="168" rx="18" fill="#161B23" stroke="#29303B"/>
+    <text x="444" y="258" fill="#F3F5F8" font-size="16" font-family="Noto Sans KR, sans-serif" font-weight="700">Google 계정으로 시작</text>
+    <text x="444" y="286" fill="#8E97A9" font-size="13" font-family="Noto Sans KR, sans-serif">dark neutral button 사용</text>
+    <rect x="444" y="308" width="168" height="38" rx="12" fill="#202733" stroke="#313A48"/>
+    <text x="475" y="331" fill="#F3F5F8" font-size="13" font-family="Noto Sans KR, sans-serif" font-weight="700">Google 로그인</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="760" y="120" width="760" height="390" rx="24" fill="#0E1117" stroke="#252C37"/>
+    <rect x="760" y="120" width="760" height="50" rx="24" fill="rgba(255,255,255,0.02)"/>
+    <text x="792" y="150" fill="#C7CFDA" font-size="12" font-family="Noto Sans KR, sans-serif" font-weight="700" letter-spacing="2">LIST</text>
+    <rect x="1020" y="132" width="220" height="28" rx="10" fill="#1B212B" stroke="#2C3441"/>
+    <text x="1044" y="150" fill="#8E97A9" font-size="12" font-family="Noto Sans KR, sans-serif">문서 검색</text>
+
+    <rect x="788" y="194" width="394" height="258" rx="18" fill="#161B23"/>
+    <text x="812" y="220" fill="#C7CFDA" font-size="11" font-family="Noto Sans KR, sans-serif" font-weight="700" letter-spacing="2">RECENT</text>
+    <rect x="804" y="236" width="362" height="52" rx="12" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.12)"/>
+    <rect x="818" y="248" width="28" height="28" rx="8" fill="#F6F3EC"/>
+    <text x="858" y="268" fill="#F3F5F8" font-size="14" font-family="Noto Sans KR, sans-serif" font-weight="600">박규태-이력서</text>
+    <text x="1084" y="268" fill="#8E97A9" font-size="12" font-family="Noto Sans KR, sans-serif">3월 23일</text>
+
+    <text x="812" y="324" fill="#C7CFDA" font-size="11" font-family="Noto Sans KR, sans-serif" font-weight="700" letter-spacing="2">ALL DOCUMENTS</text>
+    <rect x="804" y="340" width="362" height="48" rx="12" fill="#1B212B"/>
+    <rect x="804" y="396" width="362" height="48" rx="12" fill="#1B212B"/>
+
+    <rect x="1206" y="194" width="286" height="258" rx="18" fill="#161B23"/>
+    <rect x="1260" y="226" width="178" height="170" rx="18" fill="#F6F3EC"/>
+    <rect x="1278" y="248" width="116" height="8" rx="4" fill="#DDD5CA"/>
+    <rect x="1278" y="266" width="132" height="8" rx="4" fill="#DDD5CA"/>
+
+    <rect x="788" y="468" width="704" height="26" rx="13" fill="#12161D" stroke="#2B3340"/>
+    <text x="812" y="485" fill="#8E97A9" font-size="12" font-family="Noto Sans KR, sans-serif">선택됨: 박규태-이력서</text>
+    <text x="1332" y="485" fill="#F3F5F8" font-size="12" font-family="Noto Sans KR, sans-serif">열기   복제   삭제</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="80" y="500" width="980" height="430" rx="24" fill="#0E1117" stroke="#252C37"/>
+    <rect x="80" y="500" width="980" height="50" rx="24" fill="rgba(255,255,255,0.02)"/>
+    <text x="112" y="530" fill="#C7CFDA" font-size="12" font-family="Noto Sans KR, sans-serif" font-weight="700" letter-spacing="2">EDITOR</text>
+
+    <rect x="104" y="574" width="196" height="310" rx="16" fill="#161B23"/>
+    <rect x="118" y="594" width="168" height="40" rx="12" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.12)"/>
+    <rect x="118" y="642" width="168" height="36" rx="12" fill="#1B212B"/>
+    <rect x="118" y="686" width="168" height="36" rx="12" fill="#1B212B"/>
+    <rect x="118" y="730" width="168" height="36" rx="12" fill="#1B212B"/>
+
+    <rect x="320" y="574" width="340" height="310" rx="16" fill="#161B23"/>
+    <text x="344" y="604" fill="#F3F5F8" font-size="16" font-family="Noto Sans KR, sans-serif" font-weight="700">현재 섹션</text>
+    <rect x="344" y="628" width="292" height="40" rx="12" fill="#1B212B"/>
+    <rect x="344" y="684" width="292" height="40" rx="12" fill="#1B212B"/>
+    <rect x="344" y="740" width="292" height="40" rx="12" fill="#1B212B"/>
+
+    <rect x="680" y="574" width="356" height="310" rx="16" fill="#0C1016"/>
+    <rect x="734" y="610" width="248" height="226" rx="18" fill="#F6F3EC"/>
+    <rect x="752" y="636" width="132" height="8" rx="4" fill="#DDD5CA"/>
+    <rect x="752" y="654" width="156" height="8" rx="4" fill="#DDD5CA"/>
+
+    <rect x="104" y="896" width="932" height="24" rx="12" fill="#12161D" stroke="#2B3340"/>
+    <text x="124" y="912" fill="#8E97A9" font-size="12" font-family="Noto Sans KR, sans-serif">저장됨 1분 전</text>
+    <text x="862" y="912" fill="#F3F5F8" font-size="12" font-family="Noto Sans KR, sans-serif">저장   PDF   더보기</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="1120" y="560" width="340" height="370" rx="28" fill="#0E1117" stroke="#252C37"/>
+    <text x="1150" y="596" fill="#C7CFDA" font-size="12" font-family="Noto Sans KR, sans-serif" font-weight="700" letter-spacing="2">MOBILE</text>
+    <rect x="1144" y="620" width="292" height="100" rx="18" fill="#161B23"/>
+    <text x="1166" y="652" fill="#F3F5F8" font-size="16" font-family="Noto Sans KR, sans-serif" font-weight="700">최근 작업</text>
+    <text x="1166" y="680" fill="#8E97A9" font-size="13" font-family="Noto Sans KR, sans-serif">home-first, search는 secondary</text>
+    <rect x="1144" y="742" width="292" height="48" rx="12" fill="#1B212B"/>
+    <rect x="1144" y="800" width="292" height="48" rx="12" fill="#1B212B"/>
+    <rect x="1168" y="882" width="244" height="22" rx="11" fill="#12161D" stroke="#2B3340"/>
+    <text x="1204" y="897" fill="#F3F5F8" font-size="12" font-family="Noto Sans KR, sans-serif">저장   더보기</text>
+  </g>
+</svg>

@@ -1,7 +1,25 @@
 "use client";
 
 import Image from "next/image";
-import type { ChangeEvent, DragEvent } from "react";
+import {
+  closestCenter,
+  DndContext,
+  KeyboardSensor,
+  PointerSensor,
+  useSensor,
+  useSensors,
+  type DragEndEvent,
+  type DragOverEvent,
+  type DragStartEvent
+} from "@dnd-kit/core";
+import {
+  SortableContext,
+  sortableKeyboardCoordinates,
+  useSortable,
+  verticalListSortingStrategy
+} from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
+import type { ChangeEvent } from "react";
 import { useState } from "react";
 import { Eye, EyeOff, GripVertical } from "lucide-react";
 
@@ -10,8 +28,8 @@ import { useAtomValue, useSetAtom } from "jotai";
 import { Accordion } from "@/app/components/ui/accordion";
 import { Button } from "@/app/components/ui/button";
 import {
-  openSectionIdsAtom,
-  setOpenSectionIdsAtom
+  openSectionIdAtom,
+  setOpenSectionIdAtom
 } from "@/lib/resume-builder/state";
 import { getInitials } from "@/lib/resume-builder/utils";
 import type { ResumeData } from "@/lib/resume-template";
@@ -70,9 +88,9 @@ const SECTION_ORDER_VISIBILITY_MAP: Record<ResumeSectionOrderKey, ResumeVisibili
   projects: "projects",
   salary: "salary",
   skills: "skills",
-  strengths: "skills",
-  summary: "basic",
-  totalExperience: "experience"
+  strengths: "strengths",
+  summary: "summary",
+  totalExperience: "totalExperience"
 };
 
 type RepeatableSectionKey =
@@ -188,10 +206,20 @@ export function EditorPanel({
   presentation,
   resume
 }: EditorPanelProps) {
-  const openSectionIds = useAtomValue(openSectionIdsAtom);
-  const setOpenSectionIds = useSetAtom(setOpenSectionIdsAtom);
-  const [draggedSectionKey, setDraggedSectionKey] = useState<ResumeSectionOrderKey | null>(null);
-  const [dragOverSectionKey, setDragOverSectionKey] = useState<ResumeSectionOrderKey | null>(null);
+  const openSectionId = useAtomValue(openSectionIdAtom);
+  const setOpenSectionId = useSetAtom(setOpenSectionIdAtom);
+  const [activeSectionKey, setActiveSectionKey] = useState<ResumeSectionOrderKey | null>(null);
+  const [overSectionKey, setOverSectionKey] = useState<ResumeSectionOrderKey | null>(null);
+  const sensors = useSensors(
+    useSensor(PointerSensor, {
+      activationConstraint: {
+        distance: 6
+      }
+    }),
+    useSensor(KeyboardSensor, {
+      coordinateGetter: sortableKeyboardCoordinates
+    })
+  );
 
   const handleInput =
     (setter: (value: string) => void) =>
@@ -201,28 +229,41 @@ export function EditorPanel({
 
   const visibility = presentation.sectionVisibility;
 
-  const handleSectionDrop =
-    (targetKey: ResumeSectionOrderKey) => (event: DragEvent<HTMLButtonElement>) => {
-      event.preventDefault();
+  const handleSectionDragStart = ({ active }: DragStartEvent) => {
+    if (isResumeSectionOrderKey(active.id)) {
+      setActiveSectionKey(active.id);
+      setOverSectionKey(active.id);
+    }
+  };
 
-      if (!draggedSectionKey || draggedSectionKey === targetKey) {
-        setDraggedSectionKey(null);
-        setDragOverSectionKey(null);
-        return;
+  const handleSectionDragOver = ({ over }: DragOverEvent) => {
+    setOverSectionKey(isResumeSectionOrderKey(over?.id) ? over.id : null);
+  };
+
+  const handleSectionDragEnd = ({ active, over }: DragEndEvent) => {
+    if (isResumeSectionOrderKey(active.id) && isResumeSectionOrderKey(over?.id)) {
+      if (active.id !== over.id) {
+        onMoveSection(active.id, over.id);
       }
+    }
 
-      onMoveSection(draggedSectionKey, targetKey);
-      setDraggedSectionKey(null);
-      setDragOverSectionKey(null);
-    };
+    setActiveSectionKey(null);
+    setOverSectionKey(null);
+  };
+
+  const handleSectionDragCancel = () => {
+    setActiveSectionKey(null);
+    setOverSectionKey(null);
+  };
 
   return (
     <aside className="editor-panel">
       <Accordion
-        type="multiple"
+        type="single"
+        collapsible
         className="editor-accordion"
-        value={openSectionIds}
-        onValueChange={(values) => setOpenSectionIds(values)}
+        value={openSectionId ?? ""}
+        onValueChange={setOpenSectionId}
       >
         <AccordionCard
           description="템플릿을 고르고, 아래 문서 순서를 드래그로 바꿀 수 있습니다."
@@ -254,61 +295,54 @@ export function EditorPanel({
               <p>드래그해서 미리보기와 PDF 섹션 순서를 바꿉니다.</p>
             </div>
 
-            <div className="section-order-list">
-              {presentation.sectionOrder.map((sectionKey) => {
-                const relatedVisibilityKey = SECTION_ORDER_VISIBILITY_MAP[sectionKey];
-                const isHidden = !visibility[relatedVisibilityKey];
-                const draggedIndex = draggedSectionKey
-                  ? presentation.sectionOrder.indexOf(draggedSectionKey)
-                  : -1;
-                const currentIndex = presentation.sectionOrder.indexOf(sectionKey);
-                const dragPositionClass =
-                  dragOverSectionKey === sectionKey && draggedIndex !== -1
-                    ? draggedIndex < currentIndex
-                      ? "is-drop-after"
-                      : "is-drop-before"
-                    : "";
+            <DndContext
+              collisionDetection={closestCenter}
+              sensors={sensors}
+              onDragCancel={handleSectionDragCancel}
+              onDragEnd={handleSectionDragEnd}
+              onDragOver={handleSectionDragOver}
+              onDragStart={handleSectionDragStart}
+            >
+              <SortableContext
+                items={presentation.sectionOrder}
+                strategy={verticalListSortingStrategy}
+              >
+                <div className="section-order-list">
+                  {presentation.sectionOrder.map((sectionKey) => {
+                    const relatedVisibilityKey = SECTION_ORDER_VISIBILITY_MAP[sectionKey];
+                    const isHidden = !visibility[relatedVisibilityKey];
+                    const activeIndex = activeSectionKey
+                      ? presentation.sectionOrder.indexOf(activeSectionKey)
+                      : -1;
+                    const currentIndex = presentation.sectionOrder.indexOf(sectionKey);
+                    const dragPositionClass =
+                      overSectionKey === sectionKey && activeIndex !== -1
+                        ? activeIndex < currentIndex
+                          ? "is-drop-after"
+                          : activeIndex > currentIndex
+                            ? "is-drop-before"
+                            : ""
+                        : "";
 
-                return (
-                  <button
-                    key={sectionKey}
-                    className={`section-order-item ${draggedSectionKey === sectionKey ? "is-dragging" : ""} ${isHidden ? "is-hidden" : ""} ${dragPositionClass}`.trim()}
-                    draggable
-                    type="button"
-                    onDragEnd={() => {
-                      setDraggedSectionKey(null);
-                      setDragOverSectionKey(null);
-                    }}
-                    onDragOver={(event) => {
-                      event.preventDefault();
-                      if (draggedSectionKey && draggedSectionKey !== sectionKey) {
-                        setDragOverSectionKey(sectionKey);
-                      }
-                    }}
-                    onDragStart={() => {
-                      setDraggedSectionKey(sectionKey);
-                      setDragOverSectionKey(null);
-                    }}
-                    onDrop={handleSectionDrop(sectionKey)}
-                  >
-                    <span className="section-order-grip" aria-hidden="true">
-                      <GripVertical />
-                    </span>
-                    <span className="section-order-label">
-                      {SECTION_ORDER_LABELS[sectionKey]}
-                    </span>
-                    {isHidden ? (
-                      <span className="section-order-hidden-badge">숨김</span>
-                    ) : null}
-                  </button>
-                );
-              })}
-            </div>
+                    return (
+                      <SortableSectionOrderItem
+                        key={sectionKey}
+                        isDragging={activeSectionKey === sectionKey}
+                        isHidden={isHidden}
+                        label={SECTION_ORDER_LABELS[sectionKey]}
+                        sectionKey={sectionKey}
+                        statusClassName={dragPositionClass}
+                      />
+                    );
+                  })}
+                </div>
+              </SortableContext>
+            </DndContext>
           </div>
         </AccordionCard>
 
         <AccordionCard
-          description="이름, 포지션과 소개 문구를 입력하세요."
+          description="이름과 희망 포지션은 문서 헤더 기본 정보로 표시됩니다."
           isVisible={visibility.basic}
           title="기본 정보"
           value="basic"
@@ -333,23 +367,6 @@ export function EditorPanel({
               />
             </label>
           </div>
-
-          <label className="field">
-            <span>한 줄 소개</span>
-            <textarea
-              value={resume.summary}
-              onChange={handleInput((value) => onFieldChange("summary", value))}
-              lang="ko"
-              rows={4}
-              spellCheck
-              placeholder="핵심 경력과 강점을 간단히 정리하세요."
-            />
-            <SpellcheckFeedback
-              fieldId="summary"
-              onApplyText={(value) => onFieldChange("summary", value)}
-              text={resume.summary}
-            />
-          </label>
         </AccordionCard>
 
         <AccordionCard
@@ -430,11 +447,36 @@ export function EditorPanel({
         </AccordionCard>
 
         <AccordionCard
-          description="강점은 줄바꿈, 기술은 쉼표로 구분하면 됩니다."
-          isVisible={visibility.skills}
-          title="강점과 기술"
-          value="skills"
-          onToggleVisibility={() => onToggleSectionVisibility("skills")}
+          description="문서 상단 소개 섹션에 단독으로 표시됩니다."
+          isVisible={visibility.summary}
+          title="소개"
+          value="summary"
+          onToggleVisibility={() => onToggleSectionVisibility("summary")}
+        >
+          <label className="field">
+            <span>한 줄 소개</span>
+            <textarea
+              value={resume.summary}
+              onChange={handleInput((value) => onFieldChange("summary", value))}
+              lang="ko"
+              rows={4}
+              spellCheck
+              placeholder="핵심 경력과 강점을 간단히 정리하세요."
+            />
+            <SpellcheckFeedback
+              fieldId="summary"
+              onApplyText={(value) => onFieldChange("summary", value)}
+              text={resume.summary}
+            />
+          </label>
+        </AccordionCard>
+
+        <AccordionCard
+          description="줄바꿈 단위로 목록처럼 표시됩니다."
+          isVisible={visibility.strengths}
+          title="핵심 강점"
+          value="strengths"
+          onToggleVisibility={() => onToggleSectionVisibility("strengths")}
         >
           <label className="field">
             <span>핵심 강점</span>
@@ -452,7 +494,15 @@ export function EditorPanel({
               text={resume.strengths}
             />
           </label>
+        </AccordionCard>
 
+        <AccordionCard
+          description="쉼표로 구분하면 태그처럼 표시됩니다."
+          isVisible={visibility.skills}
+          title="기술 스택"
+          value="skills"
+          onToggleVisibility={() => onToggleSectionVisibility("skills")}
+        >
           <label className="field">
             <span>기술 스택</span>
             <textarea
@@ -462,6 +512,18 @@ export function EditorPanel({
               placeholder="Next.js, React, JavaScript, CSS"
             />
           </label>
+        </AccordionCard>
+
+        <AccordionCard
+          description="경력 기간을 기준으로 자동 계산되어 표시됩니다."
+          isVisible={visibility.totalExperience}
+          title="총 경력"
+          value="totalExperience"
+          onToggleVisibility={() => onToggleSectionVisibility("totalExperience")}
+        >
+          <p className="field-note">
+            경력 항목의 시작일과 종료일을 기준으로 미리보기와 PDF에서 자동 계산됩니다.
+          </p>
         </AccordionCard>
 
         <AccordionCard
@@ -987,6 +1049,48 @@ export function EditorPanel({
   );
 }
 
+function SortableSectionOrderItem({
+  isDragging,
+  isHidden,
+  label,
+  sectionKey,
+  statusClassName
+}: {
+  isDragging: boolean;
+  isHidden: boolean;
+  label: string;
+  sectionKey: ResumeSectionOrderKey;
+  statusClassName: string;
+}) {
+  const { attributes, listeners, setNodeRef, transform, transition } = useSortable({
+    id: sectionKey
+  });
+  const style = {
+    transform: CSS.Transform.toString(transform),
+    transition
+  };
+
+  return (
+    <div
+      ref={setNodeRef}
+      className={`section-order-item ${isDragging ? "is-dragging" : ""} ${isHidden ? "is-hidden" : ""} ${statusClassName}`.trim()}
+      style={style}
+    >
+      <button
+        aria-label={`${label} 순서 변경`}
+        className="section-order-grip"
+        type="button"
+        {...attributes}
+        {...listeners}
+      >
+        <GripVertical />
+      </button>
+      <span className="section-order-label">{label}</span>
+      {isHidden ? <span className="section-order-hidden-badge">숨김</span> : null}
+    </div>
+  );
+}
+
 function RepeatCardHeader({
   hidden,
   label,
@@ -1026,4 +1130,8 @@ function RepeatCardHeader({
       </div>
     </div>
   );
+}
+
+function isResumeSectionOrderKey(value: unknown): value is ResumeSectionOrderKey {
+  return typeof value === "string" && value in SECTION_ORDER_LABELS;
 }

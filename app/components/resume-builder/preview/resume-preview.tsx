@@ -84,13 +84,15 @@ export const ResumePreview = memo(function ResumePreview({
   );
   const showHeader = visibility.photo || visibility.basic || visibility.contact;
 
-  const summarySection = visibility.basic ? (
+  const summarySection = visibility.summary ? (
     <SummarySection summary={resume.summary} />
   ) : null;
-  const strengthsSection = visibility.skills ? <StrengthsSection lines={strengthLines} /> : null;
+  const strengthsSection = visibility.strengths ? (
+    <StrengthsSection lines={strengthLines} />
+  ) : null;
   const skillsSection = visibility.skills ? <SkillsSection tags={skillTags} /> : null;
   const totalExperienceSection =
-    visibility.experience && totalExperienceLabel ? (
+    visibility.totalExperience && totalExperienceLabel ? (
       <TotalExperienceSection label={totalExperienceLabel} />
     ) : null;
   const experienceSection = visibility.experience ? (
@@ -219,10 +221,7 @@ export const ResumePreview = memo(function ResumePreview({
 
   return (
     <section className="preview-panel">
-      <div className="preview-note">
-        오른쪽 이력서는 항상 같은 문서 스타일을 유지하고, `PDF 다운로드`는 이 내용을
-        기준으로 생성됩니다.
-      </div>
+      <div className="preview-note">PDF 기준 미리보기</div>
 
       <div className="preview-document-frame">
         <article className={`resume-paper template-${presentation.templateId}`}>

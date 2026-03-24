@@ -7,8 +7,8 @@ import { cn } from "@/lib/utils";
 
 import styles from "./button.module.scss";
 
-type ButtonVariant = "primary" | "ghost" | "soft" | "link";
-type ButtonSize = "default" | "small" | "icon";
+export type ButtonVariant = "primary" | "ghost" | "soft" | "link";
+export type ButtonSize = "default" | "small" | "icon";
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   asChild?: boolean;

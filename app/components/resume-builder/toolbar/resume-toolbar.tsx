@@ -75,9 +75,11 @@ export function ResumeToolbar({
           canManageRecord={canManageRecord}
           isDeleting={isDeleting}
           isDuplicating={isDuplicating}
+          isExportingPdf={isExportingPdf}
           onBackToList={onBackToList}
           onClearResume={onClearResume}
           onDelete={onDelete}
+          onDownloadPdf={onDownloadPdf}
           onDuplicate={onDuplicate}
           onExportJson={onExportJson}
           onOpenImport={onOpenImport}
@@ -103,15 +105,6 @@ export function ResumeToolbar({
               : isDirty
                 ? "저장"
                 : "저장됨"}
-        </Button>
-        <Button
-          className="toolbar-pdf-button"
-          type="button"
-          variant="ghost"
-          onClick={onDownloadPdf}
-          disabled={isExportingPdf}
-        >
-          {isExportingPdf ? "PDF 생성 중..." : "PDF 다운로드"}
         </Button>
       </div>
     </div>

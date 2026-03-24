@@ -3,9 +3,12 @@ import type { ResumeData } from "@/lib/resume-template";
 export const RESUME_TEMPLATE_IDS = ["default", "compact", "split"] as const;
 export const RESUME_VISIBILITY_KEYS = [
   "basic",
+  "summary",
   "photo",
   "contact",
+  "strengths",
   "skills",
+  "totalExperience",
   "experience",
   "education",
   "projects",

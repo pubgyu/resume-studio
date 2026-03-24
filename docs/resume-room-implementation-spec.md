@@ -17,6 +17,7 @@
 - TypeScript strict mode
 - SCSS
 - Jotai
+- dnd-kit
 - Supabase SSR / Supabase JS
 - React PDF Renderer
 - Three.js
@@ -45,9 +46,10 @@
 
 현재 디자인 기준 문서:
 
-- `docs/resume-room-design-set.md`
-- `docs/resume-room-design-delta-v1.1.md`
-- `docs/resume-room-design-tokens.json`
+- `docs/raycast-strict-benchmark-v4.md`
+- `docs/raycast-strict-workspace-spec-v3.md`
+- `docs/raycast-strict-ui-tokens-v3.json`
+- `docs/mockups/raycast-strict-rough-v3.svg`
 
 ## 3. 주요 라우트
 
@@ -141,9 +143,31 @@ type ResumePresentation = {
 - `templateId`
   - 문서 레이아웃 선택
 - `sectionVisibility`
-  - 섹션 전체 숨김/표시
+  - 문서 섹션 단위 숨김/표시
 - `sectionOrder`
   - 섹션 순서
+
+현재 `sectionVisibility`는 아래 수준까지 세분화되어 있다.
+
+- `basic`
+- `summary`
+- `photo`
+- `contact`
+- `strengths`
+- `skills`
+- `totalExperience`
+- `experience`
+- `education`
+- `projects`
+- `certifications`
+- `languageStudies`
+- `salary`
+- `portfolios`
+
+주의:
+
+- 예전 저장 데이터의 `basic`, `skills`, `experience` 묶음 visibility는 로드 시 새 키로 자동 매핑된다.
+- 현재 직렬화 버전은 `version: 4`다.
 
 ### 5.3 ResumeData
 
@@ -237,6 +261,10 @@ create table public.resumes (
   - PDF 렌더링 전용 문서
 - `ResumeToolbar`
   - 저장/PDF/import/export/메뉴 액션
+- `ResumeListWorkspace`
+  - row 기반 목록, 선택 문서, 목록 액션 오케스트레이션
+- `ResumePdfPreview`
+  - 목록 우측 PDF viewer 미리보기 생성 및 표시
 
 ### 7.2 편집기 동작 원칙
 
@@ -244,6 +272,8 @@ create table public.resumes (
 - `useDeferredValue`로 미리보기 부하를 분산
 - draft는 localStorage에 debounce 저장
 - DB는 저장 버튼 또는 자동 저장 조건으로 반영
+- 문서 순서 드래그는 `dnd-kit` 기반으로 동작한다.
+- 모바일에서는 전체 row가 아니라 grip handle 기준으로 드래그를 시작한다.
 
 모바일 추가 동작:
 
@@ -315,6 +345,7 @@ create table public.resumes (
 - 섹션 단위 숨김/표시 가능
 - 항목 단위 숨김/표시 가능
 - 섹션 순서 드래그 변경 가능
+- `summary`, `strengths`, `totalExperience`도 별도 visibility key로 독립 제어된다
 
 ### 9.3 자동 계산
 
@@ -328,6 +359,7 @@ create table public.resumes (
 관련 파일:
 
 - `app/components/resume-builder/pdf/resume-pdf-document.tsx`
+- `app/components/resumes/resume-pdf-preview.tsx`
 
 원칙:
 
@@ -335,6 +367,7 @@ create table public.resumes (
 - 템플릿 상태 반영
 - 링크 포함
 - 파일명은 `resumeName` 기준
+- 목록 페이지 우측 선택 미리보기는 PDF blob + iframe viewer 기준으로 노출된다
 
 ### 10.2 데이터 import/export
 
@@ -412,8 +445,9 @@ create table public.resumes (
 
 1. `app/page.tsx`, `app/login/page.tsx`, `app/resumes/page.tsx`, `app/resumes/new/page.tsx`, `app/resumes/[resumeId]/page.tsx`로 사용자 흐름을 이해한다.
 2. `lib/resume-template.ts`, `lib/resumes/types.ts`, `lib/resumes/utils.ts`로 데이터 모델을 이해한다.
-3. `app/components/resume-builder/index.tsx`에서 저장 정책과 편집기 상태 흐름을 확인한다.
+3. `app/components/resume-builder/index.tsx`, `app/components/resume-builder/editor/editor-panel.tsx`에서 저장 정책과 편집기 상태 흐름, section order/visibility 동작을 확인한다.
 4. 수정 범위가 저장/인증/API에 걸치면 `app/api/resumes/*`, `lib/resumes/server.ts`, `lib/supabase/*`, `supabase/resumes.sql`을 함께 본다.
+5. 목록 화면 수정이면 `app/components/resumes/resume-list-workspace.tsx`, `app/components/resumes/resume-pdf-preview.tsx`를 같이 본다.
 
 ## 15. 변경 시 주의사항
 

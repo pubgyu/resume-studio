@@ -11,9 +11,11 @@ type ToolbarMenuProps = {
   canManageRecord?: boolean;
   isDeleting?: boolean;
   isDuplicating?: boolean;
+  isExportingPdf?: boolean;
   onBackToList: () => void;
   onClearResume: () => void;
   onDelete?: () => void;
+  onDownloadPdf: () => void;
   onDuplicate?: () => void;
   onExportJson: () => void;
   onOpenImport: () => void;
@@ -24,9 +26,11 @@ export function ToolbarMenu({
   canManageRecord = false,
   isDeleting = false,
   isDuplicating = false,
+  isExportingPdf = false,
   onBackToList,
   onClearResume,
   onDelete,
+  onDownloadPdf,
   onDuplicate,
   onExportJson,
   onOpenImport,
@@ -100,6 +104,15 @@ export function ToolbarMenu({
             onClick={() => runAndClose(onClearResume)}
           >
             빈 템플릿
+          </Button>
+          <Button
+            className={styles.item}
+            size="small"
+            type="button"
+            variant="ghost"
+            onClick={() => runAndClose(onDownloadPdf)}
+          >
+            {isExportingPdf ? "PDF 생성 중..." : "PDF 다운로드"}
           </Button>
           <Button
             className={styles.item}

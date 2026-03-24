@@ -1,0 +1,221 @@
+<svg width="1600" height="1280" viewBox="0 0 1600 1280" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1600" y2="1280" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0D1016"/>
+      <stop offset="1" stop-color="#111621"/>
+    </linearGradient>
+    <radialGradient id="glowBlue" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(260 220) rotate(35) scale(420 220)">
+      <stop stop-color="#6E7CFF" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#6E7CFF" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowBlue2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1320 980) rotate(-20) scale(360 220)">
+      <stop stop-color="#4E90FF" stop-opacity="0.16"/>
+      <stop offset="1" stop-color="#4E90FF" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="paper" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#FAF7F2"/>
+      <stop offset="1" stop-color="#F1EAE2"/>
+    </linearGradient>
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="24" stdDeviation="24" flood-color="#000000" flood-opacity="0.28"/>
+    </filter>
+    <filter id="panelShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="18" stdDeviation="22" flood-color="#000000" flood-opacity="0.22"/>
+    </filter>
+    <filter id="paperShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="24" stdDeviation="26" flood-color="#000000" flood-opacity="0.25"/>
+    </filter>
+    <style>
+      .label { font: 700 18px 'Noto Sans KR', sans-serif; fill: #F4F7FB; letter-spacing: 0.04em; }
+      .small { font: 600 12px 'Noto Sans KR', sans-serif; fill: #8F9AB0; letter-spacing: 0.14em; }
+      .title { font: 800 34px 'Noto Sans KR', sans-serif; fill: #F6F8FC; }
+      .body { font: 500 18px 'Noto Sans KR', sans-serif; fill: #9EA8BA; }
+      .meta { font: 600 12px 'Noto Sans KR', sans-serif; fill: #AAB3C3; letter-spacing: 0.06em; }
+      .chip { font: 700 12px 'Noto Sans KR', sans-serif; fill: #F8FBFF; }
+      .tiny { font: 600 11px 'Noto Sans KR', sans-serif; fill: #7F8A9E; letter-spacing: 0.1em; }
+      .button { font: 700 15px 'Noto Sans KR', sans-serif; fill: #111621; }
+      .buttonGhost { font: 700 14px 'Noto Sans KR', sans-serif; fill: #F3F6FA; }
+    </style>
+  </defs>
+
+  <rect width="1600" height="1280" fill="url(#bg)"/>
+  <rect width="1600" height="1280" fill="url(#glowBlue)"/>
+  <rect width="1600" height="1280" fill="url(#glowBlue2)"/>
+
+  <text x="72" y="72" class="label">ROUGH MOCKUP BOARD</text>
+  <text x="72" y="104" class="body">Dark Command Workspace / Raycast-like hierarchy / less UI / darker palette</text>
+
+  <!-- PC LOGIN FRAME -->
+  <g transform="translate(72 148)">
+    <rect width="700" height="470" rx="28" fill="#10151E" stroke="rgba(255,255,255,0.08)" filter="url(#softShadow)"/>
+    <text x="28" y="34" class="small">PC LOGIN</text>
+
+    <rect x="28" y="52" width="644" height="62" rx="22" fill="rgba(22,28,38,0.76)" stroke="rgba(255,255,255,0.08)"/>
+    <text x="52" y="90" class="label" style="font-size:16px;">Resume Room</text>
+    <rect x="576" y="68" width="64" height="30" rx="15" fill="#151B24" stroke="rgba(255,255,255,0.08)"/>
+
+    <text x="42" y="180" class="small">RESUME ROOM</text>
+    <text x="42" y="230" class="title">이력서를 저장하고</text>
+    <text x="42" y="272" class="title">바로 이어 쓰는 작업실</text>
+    <text x="42" y="318" class="body">저장, 버전, PDF까지 한 흐름으로.</text>
+
+    <rect x="42" y="350" width="70" height="32" rx="16" fill="#151B24" stroke="rgba(255,255,255,0.08)"/>
+    <text x="64" y="371" class="chip">저장</text>
+    <rect x="120" y="350" width="70" height="32" rx="16" fill="#151B24" stroke="rgba(255,255,255,0.08)"/>
+    <text x="142" y="371" class="chip">버전</text>
+    <rect x="198" y="350" width="64" height="32" rx="16" fill="#151B24" stroke="rgba(255,255,255,0.08)"/>
+    <text x="221" y="371" class="chip">PDF</text>
+
+    <circle cx="430" cy="264" r="112" fill="rgba(110,124,255,0.14)"/>
+    <g filter="url(#paperShadow)">
+      <rect x="360" y="156" width="170" height="220" rx="22" fill="url(#paper)" stroke="rgba(18,22,30,0.08)"/>
+      <rect x="390" y="182" width="78" height="10" rx="5" fill="#2C3340"/>
+      <rect x="390" y="202" width="52" height="8" rx="4" fill="#B9C1CF"/>
+      <circle cx="490" cy="192" r="18" fill="#E9EDF3"/>
+      <rect x="390" y="232" width="108" height="6" rx="3" fill="#D4DBE5"/>
+      <rect x="390" y="244" width="120" height="6" rx="3" fill="#D4DBE5"/>
+      <rect x="390" y="270" width="110" height="54" rx="14" fill="#EEF2F6"/>
+      <rect x="404" y="286" width="58" height="8" rx="4" fill="#3A4250"/>
+      <rect x="404" y="304" width="82" height="6" rx="3" fill="#CED6E1"/>
+      <rect x="404" y="316" width="90" height="6" rx="3" fill="#CED6E1"/>
+      <rect x="390" y="340" width="52" height="6" rx="3" fill="#D4DBE5"/>
+    </g>
+
+    <rect x="520" y="154" width="140" height="190" rx="24" fill="#151B24" stroke="rgba(255,255,255,0.08)" filter="url(#panelShadow)"/>
+    <text x="546" y="192" class="small">GOOGLE</text>
+    <text x="546" y="232" class="title" style="font-size:28px;">시작</text>
+    <text x="546" y="266" class="body" style="font-size:16px;">짧은 설명 두 줄</text>
+    <text x="546" y="288" class="body" style="font-size:16px;">만 남긴다</text>
+    <rect x="546" y="306" width="88" height="42" rx="18" fill="#E8A978"/>
+    <text x="571" y="333" class="button">로그인</text>
+  </g>
+
+  <!-- PC LIST FRAME -->
+  <g transform="translate(828 148)">
+    <rect width="700" height="470" rx="28" fill="#10151E" stroke="rgba(255,255,255,0.08)" filter="url(#softShadow)"/>
+    <text x="28" y="34" class="small">PC LIST</text>
+
+    <rect x="28" y="52" width="644" height="62" rx="22" fill="rgba(22,28,38,0.76)" stroke="rgba(255,255,255,0.08)"/>
+    <text x="52" y="90" class="label" style="font-size:16px;">Resume Room</text>
+    <rect x="216" y="68" width="210" height="30" rx="15" fill="#151B24" stroke="rgba(255,255,255,0.08)"/>
+    <text x="244" y="88" class="meta">⌘K 빠른 열기 / 문서 검색</text>
+    <rect x="560" y="62" width="92" height="42" rx="18" fill="#E8A978"/>
+    <text x="586" y="89" class="button">새 이력서</text>
+
+    <text x="42" y="164" class="small">최근 작업</text>
+    <rect x="42" y="184" width="616" height="112" rx="22" fill="#151B24" stroke="rgba(255,255,255,0.08)"/>
+    <text x="66" y="230" class="title" style="font-size:24px;">박규태-이력서</text>
+    <text x="66" y="262" class="body" style="font-size:16px;">가장 최근 문서를 바로 열어 이어서 편집</text>
+    <rect x="66" y="276" width="60" height="30" rx="15" fill="#E8A978"/>
+    <text x="84" y="296" class="button" style="font-size:13px;">열기</text>
+    <rect x="136" y="276" width="60" height="30" rx="15" fill="#151B24" stroke="rgba(255,255,255,0.08)"/>
+    <text x="154" y="296" class="buttonGhost" style="font-size:13px;">복제</text>
+    <g filter="url(#paperShadow)">
+      <rect x="528" y="202" width="98" height="76" rx="16" fill="url(#paper)"/>
+      <rect x="544" y="220" width="50" height="6" rx="3" fill="#D2D9E3"/>
+      <rect x="544" y="232" width="60" height="6" rx="3" fill="#D2D9E3"/>
+      <rect x="544" y="248" width="64" height="28" rx="10" fill="#ECEFF4"/>
+    </g>
+
+    <text x="42" y="342" class="small">내 문서</text>
+    <rect x="42" y="360" width="292" height="84" rx="22" fill="#151B24" stroke="rgba(255,255,255,0.08)"/>
+    <text x="66" y="394" class="title" style="font-size:20px;">프론트엔드 이력서</text>
+    <text x="66" y="420" class="body" style="font-size:15px;">최근 수정 3월 23일</text>
+    <rect x="264" y="378" width="48" height="48" rx="14" fill="#F4EFE8"/>
+
+    <rect x="366" y="360" width="292" height="84" rx="22" fill="#151B24" stroke="rgba(255,255,255,0.08)"/>
+    <text x="390" y="394" class="title" style="font-size:20px;">기획 이력서</text>
+    <text x="390" y="420" class="body" style="font-size:15px;">최근 수정 3월 20일</text>
+    <rect x="588" y="378" width="48" height="48" rx="14" fill="#F4EFE8"/>
+  </g>
+
+  <!-- MOBILE LOGIN FRAME -->
+  <g transform="translate(72 680)">
+    <rect width="420" height="520" rx="34" fill="#0F141C" stroke="rgba(255,255,255,0.08)" filter="url(#softShadow)"/>
+    <text x="24" y="36" class="small">MOBILE LOGIN</text>
+
+    <rect x="24" y="56" width="372" height="52" rx="18" fill="rgba(22,28,38,0.76)" stroke="rgba(255,255,255,0.08)"/>
+    <text x="42" y="89" class="label" style="font-size:15px;">Resume Room</text>
+    <rect x="340" y="68" width="34" height="28" rx="14" fill="#151B24" stroke="rgba(255,255,255,0.08)"/>
+
+    <text x="30" y="158" class="small">RESUME ROOM</text>
+    <text x="30" y="204" class="title" style="font-size:28px;">이력서를 저장하고</text>
+    <text x="30" y="238" class="title" style="font-size:28px;">바로 이어 쓰는 작업실</text>
+    <text x="30" y="280" class="body" style="font-size:18px;">짧은 설명 두 줄만 남긴다</text>
+
+    <rect x="30" y="310" width="150" height="48" rx="20" fill="#E8A978"/>
+    <text x="66" y="341" class="button">Google로 시작</text>
+
+    <circle cx="262" cy="374" r="90" fill="rgba(110,124,255,0.12)"/>
+    <g filter="url(#paperShadow)">
+      <rect x="202" y="322" width="150" height="190" rx="24" fill="url(#paper)"/>
+      <rect x="224" y="348" width="70" height="8" rx="4" fill="#2C3340"/>
+      <rect x="224" y="364" width="44" height="6" rx="3" fill="#B9C1CF"/>
+      <rect x="224" y="390" width="96" height="6" rx="3" fill="#D4DBE5"/>
+      <rect x="224" y="404" width="104" height="6" rx="3" fill="#D4DBE5"/>
+      <rect x="224" y="430" width="90" height="50" rx="12" fill="#EEF2F6"/>
+    </g>
+  </g>
+
+  <!-- MOBILE EDITOR FRAME -->
+  <g transform="translate(548 680)">
+    <rect width="420" height="520" rx="34" fill="#0F141C" stroke="rgba(255,255,255,0.08)" filter="url(#softShadow)"/>
+    <text x="24" y="36" class="small">MOBILE EDITOR</text>
+
+    <rect x="24" y="56" width="372" height="52" rx="18" fill="rgba(22,28,38,0.76)" stroke="rgba(255,255,255,0.08)"/>
+    <text x="42" y="89" class="label" style="font-size:15px;">← 박규태-이력서</text>
+    <text x="258" y="89" class="meta">저장됨</text>
+    <text x="340" y="89" class="label" style="font-size:14px;">⋯</text>
+
+    <rect x="24" y="126" width="180" height="40" rx="20" fill="#151B24" stroke="rgba(255,255,255,0.08)"/>
+    <rect x="28" y="130" width="86" height="32" rx="16" fill="#E8A978"/>
+    <text x="58" y="151" class="button" style="font-size:13px;">편집</text>
+    <text x="140" y="151" class="buttonGhost" style="font-size:13px;">미리보기</text>
+
+    <rect x="24" y="188" width="372" height="246" rx="26" fill="#151B24" stroke="rgba(255,255,255,0.08)"/>
+    <rect x="42" y="210" width="336" height="54" rx="18" fill="#181E29" stroke="rgba(255,255,255,0.06)"/>
+    <text x="60" y="230" class="tiny">기본 정보</text>
+    <rect x="60" y="242" width="120" height="8" rx="4" fill="#E8EEF8"/>
+    <rect x="42" y="278" width="336" height="54" rx="18" fill="#181E29" stroke="rgba(255,255,255,0.06)"/>
+    <text x="60" y="298" class="tiny">경력</text>
+    <rect x="60" y="310" width="96" height="8" rx="4" fill="#E8EEF8"/>
+    <rect x="42" y="346" width="336" height="54" rx="18" fill="#181E29" stroke="rgba(255,255,255,0.06)"/>
+    <text x="60" y="366" class="tiny">프로젝트</text>
+    <rect x="60" y="378" width="110" height="8" rx="4" fill="#E8EEF8"/>
+
+    <rect x="24" y="448" width="372" height="52" rx="22" fill="rgba(22,28,38,0.84)" stroke="rgba(255,255,255,0.08)"/>
+    <rect x="34" y="456" width="156" height="36" rx="18" fill="#E8A978"/>
+    <text x="98" y="479" class="button" style="font-size:14px;">저장</text>
+    <rect x="202" y="456" width="110" height="36" rx="18" fill="#151B24" stroke="rgba(255,255,255,0.08)"/>
+    <text x="233" y="479" class="buttonGhost" style="font-size:13px;">미리보기</text>
+    <rect x="322" y="456" width="64" height="36" rx="18" fill="#151B24" stroke="rgba(255,255,255,0.08)"/>
+    <text x="343" y="479" class="buttonGhost" style="font-size:13px;">PDF</text>
+  </g>
+
+  <!-- NOTES -->
+  <g transform="translate(1028 680)">
+    <rect width="500" height="520" rx="28" fill="#10151E" stroke="rgba(255,255,255,0.08)" filter="url(#softShadow)"/>
+    <text x="28" y="36" class="small">REVISED PRINCIPLES</text>
+    <text x="28" y="94" class="title" style="font-size:28px;">더 적은 UI, 더 강한 위계</text>
+
+    <text x="28" y="144" class="body" style="font-size:18px;">1. 설명 카드 줄이기</text>
+    <text x="28" y="176" class="body" style="font-size:18px;">2. 최근 작업을 메인으로</text>
+    <text x="28" y="208" class="body" style="font-size:18px;">3. 브라운 대신 다크 슬레이트</text>
+    <text x="28" y="240" class="body" style="font-size:18px;">4. 글로우는 배경에만 약하게</text>
+    <text x="28" y="272" class="body" style="font-size:18px;">5. Raycast식 빠른 액션 우선</text>
+
+    <rect x="28" y="320" width="444" height="164" rx="22" fill="#151B24" stroke="rgba(255,255,255,0.08)"/>
+    <text x="52" y="356" class="small">PALETTE</text>
+    <rect x="52" y="382" width="72" height="44" rx="14" fill="#0D1016"/>
+    <rect x="136" y="382" width="72" height="44" rx="14" fill="#141922"/>
+    <rect x="220" y="382" width="72" height="44" rx="14" fill="#1A202B"/>
+    <rect x="304" y="382" width="72" height="44" rx="14" fill="#E8A978"/>
+    <rect x="388" y="382" width="52" height="44" rx="14" fill="#6E7CFF" opacity="0.6"/>
+
+    <text x="52" y="452" class="tiny">BG</text>
+    <text x="136" y="452" class="tiny">SURFACE</text>
+    <text x="220" y="452" class="tiny">PANEL</text>
+    <text x="304" y="452" class="tiny">ACCENT</text>
+    <text x="388" y="452" class="tiny">GLOW</text>
+  </g>
+</svg>

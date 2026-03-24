@@ -448,20 +448,20 @@ export function ResumePdfDocument({
     .filter((item) => item.visible)
     .filter(hasLanguageStudyContent);
   const portfolioItems = resume.portfolios.filter((item) => item.visible && item.url.trim());
-  const totalExperienceLabel = visibility.experience
+  const totalExperienceLabel = visibility.totalExperience
     ? formatTotalExperienceLabel(experienceItems)
     : "";
   const hasSalary = visibility.salary && Boolean(resume.salary.previous || resume.salary.desired);
   const hasHeader = visibility.photo || visibility.basic || visibility.contact;
 
   const summarySection =
-    visibility.basic && resume.summary ? (
+    visibility.summary && resume.summary ? (
       <PdfSection key="summary" isCompact={isCompact} title="소개">
         <PdfParagraph isCompact={isCompact} text={resume.summary} />
       </PdfSection>
     ) : null;
   const strengthsSection =
-    visibility.skills && strengthLines.length > 0 ? (
+    visibility.strengths && strengthLines.length > 0 ? (
       <PdfSection key="strengths" isCompact={isCompact} title="핵심 강점">
         <View style={styles.bulletList}>
           {strengthLines.map((line) => (
@@ -487,7 +487,7 @@ export function ResumePdfDocument({
       </PdfSection>
     ) : null;
   const totalExperienceSection =
-    visibility.experience && totalExperienceLabel ? (
+    visibility.totalExperience && totalExperienceLabel ? (
       <PdfSection key="totalExperience" isCompact={isCompact} title="총 경력">
         <View
           style={

@@ -1,17 +1,27 @@
 "use client";
 
+import type { ReactNode } from "react";
 import { useState } from "react";
 
 import { Button } from "@/app/components/ui/button";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 import { hasSupabaseEnv } from "@/lib/supabase/env";
+import type { ButtonSize, ButtonVariant } from "@/app/components/ui/button";
 
 type GoogleSignInButtonProps = {
+  children?: ReactNode;
+  className?: string;
   nextPath?: string;
+  size?: ButtonSize;
+  variant?: ButtonVariant;
 };
 
 export function GoogleSignInButton({
-  nextPath = "/"
+  children,
+  className,
+  nextPath = "/",
+  size = "default",
+  variant = "primary"
 }: GoogleSignInButtonProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -46,8 +56,15 @@ export function GoogleSignInButton({
   };
 
   return (
-    <Button type="button" variant="primary" onClick={handleSignIn} disabled={isSubmitting}>
-      {isSubmitting ? "이동 중..." : "Google로 로그인"}
+    <Button
+      className={className}
+      type="button"
+      variant={variant}
+      size={size}
+      onClick={handleSignIn}
+      disabled={isSubmitting}
+    >
+      {isSubmitting ? "이동 중..." : (children ?? "Google로 로그인")}
     </Button>
   );
 }

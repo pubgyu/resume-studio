@@ -43,6 +43,27 @@ export async function listUserResumes(userId: string): Promise<ResumeListItem[]>
   }));
 }
 
+export async function listUserResumeRecords(userId: string): Promise<ResumeRecord[]> {
+  const supabase = await createSupabaseServerClient();
+  const { data, error } = await supabase
+    .from("resumes")
+    .select("id, resume_name, resume_json, created_at, updated_at")
+    .eq("user_id", userId)
+    .order("updated_at", { ascending: false });
+
+  if (error) {
+    throw error;
+  }
+
+  return (data ?? []).map((item) => ({
+    createdAt: item.created_at,
+    id: item.id,
+    resumeJson: item.resume_json,
+    resumeName: normalizeResumeName(item.resume_name),
+    updatedAt: item.updated_at
+  }));
+}
+
 export async function getUserResume(
   resumeId: string,
   userId: string

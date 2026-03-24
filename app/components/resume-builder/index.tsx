@@ -59,11 +59,12 @@ import {
   serializeResumeDocument
 } from "@/lib/resumes/utils";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
+import { AppThemeToggle } from "@/app/components/theme/app-theme-toggle";
+import { Button } from "@/app/components/ui/button";
 
 import { EditorPanel } from "./editor/editor-panel";
 import { ResumePreview } from "./preview/resume-preview";
-import { ResumeToolbar } from "./toolbar/resume-toolbar";
-import { Button } from "@/app/components/ui/button";
+import { ToolbarMenu } from "./toolbar/toolbar-menu";
 
 const DB_AUTOSAVE_IDLE_MS = 10000;
 
@@ -980,7 +981,6 @@ export function ResumeBuilder({
 
         <section className="studio-shell studio-shell-loading">
           <div className="panel-card loading-card">
-            <p className="eyebrow hero-brand">Resume Room</p>
             <h1 className="loading-title">저장된 이력서를 불러오는 중</h1>
             <p className="intro loading-copy">
               브라우저 임시 저장본과 테마를 준비한 뒤 바로 이어서 보여줍니다.
@@ -995,213 +995,245 @@ export function ResumeBuilder({
   }
 
   return (
-    <main className="studio-page">
+    <main className="studio-page editor-page">
       <div className="page-glow page-glow-left" />
       <div className="page-glow page-glow-right" />
       <div className="page-glow page-glow-center" />
 
       <section className="studio-shell editor-shell">
-        <header className="studio-topbar editor-topbar">
-          <div className="hero-copy">
-            <div className="hero-heading-row">
-              <div className="hero-title-block">
-                <p className="eyebrow topbar-kicker">Resume Room</p>
-                <h1 className="page-title editor-page-title">이력서 작업실</h1>
-              </div>
-            </div>
-
-            <label className="resume-name-field">
-              <span>이력서 이름</span>
-              <input
-                value={resumeName}
-                onChange={(event) => updateResumeName(event.target.value)}
-                placeholder="예: 프론트엔드 이력서"
-              />
-            </label>
-
-            <p className="intro">
-              왼쪽에서 내용을 편집하면 오른쪽 문서가 즉시 갱신되고, 저장된 이력서는 잠시
-              멈추면 자동으로 저장 합니다.
-            </p>
-
-            <div className="topbar-meta editor-topbar-meta">
-              <span className={`editor-save-state ${isDirty ? "is-dirty" : ""}`}>
-                {saveStateLabel}
+        <div className="strict-editor-window">
+          <header className="studio-topbar editor-topbar strict-window-bar">
+            <div className="window-meta">
+              <span className="window-location">
+                {resumeId ? "Editer" : "New Resume"}
               </span>
             </div>
 
-            {saveErrorMessage ? <p className="editor-error-banner">{saveErrorMessage}</p> : null}
+            <label className="resume-name-field resume-name-field-compact">
+              <input
+                value={resumeName}
+                onChange={(event) => updateResumeName(event.target.value)}
+                placeholder="이력서 이름"
+              />
+            </label>
+
+            <div className="window-actions">
+              <AppThemeToggle />
+              <Button className="toolbar-list-button" type="button" variant="ghost" onClick={() => leaveEditor("/resumes")}>
+                목록
+              </Button>
+            </div>
+          </header>
+
+          <input
+            ref={importInputRef}
+            type="file"
+            accept="application/json,.json"
+            className="visually-hidden"
+            onChange={handleImportJson}
+          />
+
+          {saveErrorMessage ? <p className="editor-error-banner">{saveErrorMessage}</p> : null}
+
+          <div className="studio-grid editor-shell-grid" data-mobile-view={mobileView}>
+            <div className="editor-command-shell">
+              <div className="editor-shell-line">Search sections and commands...</div>
+              <p className="editor-shell-label">SECTIONS</p>
+              <EditorPanel
+              onAddLanguageStudy={() =>
+                setDocument((current) => ({
+                  ...current,
+                  resume: {
+                    ...current.resume,
+                    languageStudies: [...current.resume.languageStudies, createLanguageStudy()]
+                  }
+                }))
+              }
+              onAddCertification={() =>
+                setDocument((current) => ({
+                  ...current,
+                  resume: {
+                    ...current.resume,
+                    certifications: [...current.resume.certifications, createCertification()]
+                  }
+                }))
+              }
+              onAddEducation={() =>
+                setDocument((current) => ({
+                  ...current,
+                  resume: {
+                    ...current.resume,
+                    education: [...current.resume.education, createEducation()]
+                  }
+                }))
+              }
+              onAddExperience={() =>
+                setDocument((current) => ({
+                  ...current,
+                  resume: {
+                    ...current.resume,
+                    experience: [...current.resume.experience, createExperience()]
+                  }
+                }))
+              }
+              onAddPortfolio={() =>
+                setDocument((current) => ({
+                  ...current,
+                  resume: {
+                    ...current.resume,
+                    portfolios: [...current.resume.portfolios, createPortfolio()]
+                  }
+                }))
+              }
+              onAddProject={() =>
+                setDocument((current) => ({
+                  ...current,
+                  resume: {
+                    ...current.resume,
+                    projects: [...current.resume.projects, createProject()]
+                  }
+                }))
+              }
+              onCertificationChange={updateCertification}
+              onContactChange={updateContact}
+              onEducationChange={updateEducation}
+              onExperienceChange={updateExperience}
+              onFieldChange={updateField}
+              onLanguageStudyChange={updateLanguageStudy}
+              onMoveSection={moveSection}
+              onPhotoChange={handlePhotoChange}
+              onPortfolioChange={updatePortfolio}
+              onProjectChange={updateProject}
+              onRemoveCertification={(index) =>
+                setDocument((current) => ({
+                  ...current,
+                  resume: {
+                    ...current.resume,
+                    certifications: current.resume.certifications.filter(
+                      (_, itemIndex) => itemIndex !== index
+                    )
+                  }
+                }))
+              }
+              onRemoveEducation={(index) =>
+                setDocument((current) => ({
+                  ...current,
+                  resume: {
+                    ...current.resume,
+                    education: current.resume.education.filter(
+                      (_, itemIndex) => itemIndex !== index
+                    )
+                  }
+                }))
+              }
+              onRemoveExperience={(index) =>
+                setDocument((current) => ({
+                  ...current,
+                  resume: {
+                    ...current.resume,
+                    experience: current.resume.experience.filter(
+                      (_, itemIndex) => itemIndex !== index
+                    )
+                  }
+                }))
+              }
+              onRemovePhoto={() => updateField("photo", "")}
+              onRemoveLanguageStudy={(index) =>
+                setDocument((current) => ({
+                  ...current,
+                  resume: {
+                    ...current.resume,
+                    languageStudies: current.resume.languageStudies.filter(
+                      (_, itemIndex) => itemIndex !== index
+                    )
+                  }
+                }))
+              }
+              onRemovePortfolio={(index) =>
+                setDocument((current) => ({
+                  ...current,
+                  resume: {
+                    ...current.resume,
+                    portfolios: current.resume.portfolios.filter(
+                      (_, itemIndex) => itemIndex !== index
+                    )
+                  }
+                }))
+              }
+              onRemoveProject={(index) =>
+                setDocument((current) => ({
+                  ...current,
+                  resume: {
+                    ...current.resume,
+                    projects: current.resume.projects.filter(
+                      (_, itemIndex) => itemIndex !== index
+                    )
+                  }
+                }))
+              }
+              onSalaryChange={updateSalary}
+              onTemplateChange={updateTemplateId}
+              onToggleItemVisibility={toggleItemVisibility}
+              onToggleSectionVisibility={toggleSectionVisibility}
+              presentation={presentation}
+              resume={resume}
+              />
+            </div>
+
+            <div className="editor-paper-stage">
+              <ResumePreview presentation={deferredPresentation} resume={deferredResume} />
+            </div>
           </div>
 
-          <ResumeToolbar
-            canManageRecord={Boolean(resumeId)}
-            importInputRef={importInputRef}
-            isDeleting={isDeleting}
-            isDuplicating={isDuplicating}
-            isDirty={isDirty}
-            isExportingPdf={isExportingPdf}
-            isAutoSaving={isAutoSaving}
-            isSaving={isSaving}
-            onBackToList={() => leaveEditor("/resumes")}
-            onClearResume={handleClearResume}
-            onDelete={handleDelete}
-            onDownloadPdf={handleDownloadPdf}
-            onDuplicate={handleDuplicate}
-            onExportJson={handleExportJson}
-            onImportJson={handleImportJson}
-            onOpenImport={() => importInputRef.current?.click()}
-            onSave={handleSave}
-            onSignOut={handleSignOut}
-          />
-        </header>
-
-        <div className="studio-grid" data-mobile-view={mobileView}>
-          <EditorPanel
-            onAddLanguageStudy={() =>
-              setDocument((current) => ({
-                ...current,
-                resume: {
-                  ...current.resume,
-                  languageStudies: [...current.resume.languageStudies, createLanguageStudy()]
-                }
-              }))
-            }
-            onAddCertification={() =>
-              setDocument((current) => ({
-                ...current,
-                resume: {
-                  ...current.resume,
-                  certifications: [...current.resume.certifications, createCertification()]
-                }
-              }))
-            }
-            onAddEducation={() =>
-              setDocument((current) => ({
-                ...current,
-                resume: {
-                  ...current.resume,
-                  education: [...current.resume.education, createEducation()]
-                }
-              }))
-            }
-            onAddExperience={() =>
-              setDocument((current) => ({
-                ...current,
-                resume: {
-                  ...current.resume,
-                  experience: [...current.resume.experience, createExperience()]
-                }
-              }))
-            }
-            onAddPortfolio={() =>
-              setDocument((current) => ({
-                ...current,
-                resume: {
-                  ...current.resume,
-                  portfolios: [...current.resume.portfolios, createPortfolio()]
-                }
-              }))
-            }
-            onAddProject={() =>
-              setDocument((current) => ({
-                ...current,
-                resume: {
-                  ...current.resume,
-                  projects: [...current.resume.projects, createProject()]
-                }
-              }))
-            }
-            onCertificationChange={updateCertification}
-            onContactChange={updateContact}
-            onEducationChange={updateEducation}
-            onExperienceChange={updateExperience}
-            onFieldChange={updateField}
-            onLanguageStudyChange={updateLanguageStudy}
-            onMoveSection={moveSection}
-            onPhotoChange={handlePhotoChange}
-            onPortfolioChange={updatePortfolio}
-            onProjectChange={updateProject}
-            onRemoveCertification={(index) =>
-              setDocument((current) => ({
-                ...current,
-                resume: {
-                  ...current.resume,
-                  certifications: current.resume.certifications.filter(
-                    (_, itemIndex) => itemIndex !== index
-                  )
-                }
-              }))
-            }
-            onRemoveEducation={(index) =>
-              setDocument((current) => ({
-                ...current,
-                resume: {
-                  ...current.resume,
-                  education: current.resume.education.filter(
-                    (_, itemIndex) => itemIndex !== index
-                  )
-                }
-              }))
-            }
-            onRemoveExperience={(index) =>
-              setDocument((current) => ({
-                ...current,
-                resume: {
-                  ...current.resume,
-                  experience: current.resume.experience.filter(
-                    (_, itemIndex) => itemIndex !== index
-                  )
-                }
-              }))
-            }
-            onRemovePhoto={() => updateField("photo", "")}
-            onRemoveLanguageStudy={(index) =>
-              setDocument((current) => ({
-                ...current,
-                resume: {
-                  ...current.resume,
-                  languageStudies: current.resume.languageStudies.filter(
-                    (_, itemIndex) => itemIndex !== index
-                  )
-                }
-              }))
-            }
-            onRemovePortfolio={(index) =>
-              setDocument((current) => ({
-                ...current,
-                resume: {
-                  ...current.resume,
-                  portfolios: current.resume.portfolios.filter(
-                    (_, itemIndex) => itemIndex !== index
-                  )
-                }
-              }))
-            }
-            onRemoveProject={(index) =>
-              setDocument((current) => ({
-                ...current,
-                resume: {
-                  ...current.resume,
-                  projects: current.resume.projects.filter(
-                    (_, itemIndex) => itemIndex !== index
-                  )
-                }
-              }))
-            }
-            onSalaryChange={updateSalary}
-            onTemplateChange={updateTemplateId}
-            onToggleItemVisibility={toggleItemVisibility}
-            onToggleSectionVisibility={toggleSectionVisibility}
-            presentation={presentation}
-            resume={resume}
-          />
-
-          <ResumePreview presentation={deferredPresentation} resume={deferredResume} />
+          <div className="editor-bottom-bar" aria-label="문서 액션 바">
+            <div className="editor-bottom-status">{saveStateLabel}</div>
+            <div className="editor-bottom-actions">
+              <Button
+                className="toolbar-save-button"
+                data-disabled-cursor={isSaving || isAutoSaving ? "wait" : "forbidden"}
+                type="button"
+                variant="primary"
+                onClick={handleSave}
+                disabled={isSaving || isAutoSaving || !isDirty}
+              >
+                {isSaving
+                  ? "저장 중..."
+                  : isAutoSaving
+                    ? "자동 저장 중..."
+                    : isDirty
+                      ? "저장"
+                      : "저장됨"}
+              </Button>
+              <Button
+                className="toolbar-pdf-button"
+                type="button"
+                variant="ghost"
+                onClick={handleDownloadPdf}
+                disabled={isExportingPdf}
+              >
+                {isExportingPdf ? "PDF 생성 중..." : "PDF"}
+              </Button>
+              <ToolbarMenu
+                canManageRecord={Boolean(resumeId)}
+                isDeleting={isDeleting}
+                isDuplicating={isDuplicating}
+                isExportingPdf={isExportingPdf}
+                onBackToList={() => leaveEditor("/resumes")}
+                onClearResume={handleClearResume}
+                onDelete={handleDelete}
+                onDownloadPdf={handleDownloadPdf}
+                onDuplicate={handleDuplicate}
+                onExportJson={handleExportJson}
+                onOpenImport={() => importInputRef.current?.click()}
+                onSignOut={handleSignOut}
+              />
+            </div>
+          </div>
         </div>
 
-        <div className="mobile-editor-bar" aria-label="모바일 문서 제어">
+        <div className="mobile-editor-dock" aria-label="모바일 문서 제어">
           <Button
-            className="mobile-editor-bar-save"
+            className="mobile-editor-dock-save"
             data-disabled-cursor={isSaving || isAutoSaving ? "wait" : "forbidden"}
             type="button"
             variant="primary"
@@ -1217,7 +1249,7 @@ export function ResumeBuilder({
                   : "저장됨"}
           </Button>
           <Button
-            className="mobile-editor-bar-toggle"
+            className="mobile-editor-dock-toggle"
             type="button"
             variant={mobileView === "preview" ? "soft" : "ghost"}
             onClick={() =>
@@ -1225,6 +1257,15 @@ export function ResumeBuilder({
             }
           >
             {mobileView === "edit" ? "미리보기" : "편집"}
+          </Button>
+          <Button
+            className="mobile-editor-dock-pdf"
+            type="button"
+            variant="ghost"
+            onClick={handleDownloadPdf}
+            disabled={isExportingPdf}
+          >
+            {isExportingPdf ? "PDF 생성 중..." : "PDF"}
           </Button>
         </div>
       </section>

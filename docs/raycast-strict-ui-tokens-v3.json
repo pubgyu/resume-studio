@@ -1,0 +1,196 @@
+{
+  "meta": {
+    "name": "Raycast Strict UI Tokens",
+    "version": "3.0.0",
+    "updatedAt": "2026-03-24",
+    "sources": [
+      "https://www.raycast.com/blog/a-fresh-look-and-feel",
+      "https://manual.raycast.com/action-panel",
+      "https://manual.raycast.com/preferences",
+      "https://www.raycast.com/blog/raycast-for-ios",
+      "https://www.raycast.com/blog/raycast-for-windows",
+      "https://www.raycast.com/blog/raycast-notes",
+      "https://www.raycast.com/core-features/notes?via=09",
+      "https://manual.raycast.com/windows/app-launcher"
+    ],
+    "notes": [
+      "Official Raycast font family and exact color tokens are not publicly documented.",
+      "Noto Sans KR is retained because the current project already uses it in code."
+    ]
+  },
+  "fontFamily": {
+    "ui": "\"Noto Sans KR\", \"Apple SD Gothic Neo\", \"Malgun Gothic\", sans-serif"
+  },
+  "fontWeight": {
+    "regular": 500,
+    "medium": 600,
+    "semibold": 700
+  },
+  "typeScale": {
+    "eyebrow": {
+      "fontSize": 11,
+      "lineHeight": 14,
+      "letterSpacing": "0.14em",
+      "fontWeight": 700
+    },
+    "utility": {
+      "fontSize": 12,
+      "lineHeight": 16,
+      "letterSpacing": "0",
+      "fontWeight": 600
+    },
+    "body": {
+      "fontSize": 14,
+      "lineHeight": 20,
+      "letterSpacing": "-0.01em",
+      "fontWeight": 500
+    },
+    "rowTitle": {
+      "fontSize": 14,
+      "lineHeight": 20,
+      "letterSpacing": "-0.01em",
+      "fontWeight": 600
+    },
+    "rowMeta": {
+      "fontSize": 12,
+      "lineHeight": 16,
+      "letterSpacing": "0",
+      "fontWeight": 500
+    },
+    "panelTitle": {
+      "fontSize": 16,
+      "lineHeight": 22,
+      "letterSpacing": "-0.02em",
+      "fontWeight": 700
+    },
+    "pageTitle": {
+      "fontSize": 24,
+      "lineHeight": 30,
+      "letterSpacing": "-0.03em",
+      "fontWeight": 700
+    },
+    "loginTitleDesktop": {
+      "fontSize": 30,
+      "lineHeight": 34,
+      "letterSpacing": "-0.035em",
+      "fontWeight": 700
+    },
+    "loginTitleMobile": {
+      "fontSize": 26,
+      "lineHeight": 30,
+      "letterSpacing": "-0.03em",
+      "fontWeight": 700
+    }
+  },
+  "color": {
+    "background": "#06070B",
+    "shell": "#0E1117",
+    "shellElevated": "#12161D",
+    "panel": "#161B23",
+    "panelSecondary": "#1B212B",
+    "previewCanvas": "#0C1016",
+    "paper": "#F6F3EC",
+    "textPrimary": "#F3F5F8",
+    "textSecondary": "#C7CFDA",
+    "textMuted": "#8E97A9",
+    "line": "rgba(255,255,255,0.08)",
+    "lineStrong": "rgba(255,255,255,0.12)",
+    "rowHover": "rgba(255,255,255,0.04)",
+    "rowActive": "rgba(255,255,255,0.08)",
+    "rowActiveInset": "rgba(255,255,255,0.14)",
+    "buttonNeutral": "#1A1F29",
+    "buttonNeutralHover": "#202733",
+    "buttonPrimary": "#202733",
+    "buttonPrimaryHover": "#283140",
+    "buttonText": "#F3F5F8",
+    "focus": "rgba(112,103,255,0.55)",
+    "danger": "#E66B6B",
+    "ambientRed": "rgba(161,49,40,0.18)",
+    "ambientViolet": "rgba(104,95,255,0.10)"
+  },
+  "radius": {
+    "shell": 22,
+    "panel": 16,
+    "row": 12,
+    "button": 12,
+    "pill": 999
+  },
+  "shadow": {
+    "shell": "0 28px 72px rgba(0,0,0,0.44)",
+    "panel": "0 10px 28px rgba(0,0,0,0.24)",
+    "paper": "0 18px 44px rgba(0,0,0,0.26)"
+  },
+  "glow": {
+    "background": "radial-gradient(circle at 18% 76%, rgba(161,49,40,0.18), transparent 34%), radial-gradient(circle at 82% 18%, rgba(104,95,255,0.10), transparent 28%)"
+  },
+  "spacing": {
+    "xs": 6,
+    "sm": 8,
+    "md": 12,
+    "lg": 16,
+    "xl": 20,
+    "xxl": 24
+  },
+  "layout": {
+    "desktop": {
+      "loginMaxWidth": 980,
+      "listMaxWidth": 1240,
+      "editorMaxWidth": 1360,
+      "windowBarHeight": 50,
+      "actionBarHeight": 54,
+      "listSplit": "56/44",
+      "sectionRailWidth": 216,
+      "formWidth": 360,
+      "previewMinWidth": 460,
+      "gutter": 20,
+      "gap": 16,
+      "rowHeight": 52
+    },
+    "mobile": {
+      "gutter": 16,
+      "rowHeight": 48,
+      "headerHeight": 56,
+      "segmentedHeight": 38,
+      "dockHeight": 58
+    }
+  },
+  "component": {
+    "windowBar": {
+      "background": "rgba(14,17,23,0.86)",
+      "backdropBlur": 18,
+      "border": "1px solid rgba(255,255,255,0.08)"
+    },
+    "searchField": {
+      "height": 38,
+      "radius": 12,
+      "background": "rgba(255,255,255,0.04)",
+      "border": "1px solid rgba(255,255,255,0.06)"
+    },
+    "row": {
+      "heightDesktop": 52,
+      "heightMobile": 48,
+      "paddingX": 12,
+      "gap": 10,
+      "radius": 12
+    },
+    "button": {
+      "height": 38,
+      "paddingX": 14,
+      "radius": 12
+    },
+    "actionBar": {
+      "height": 54,
+      "paddingX": 16,
+      "gap": 8
+    }
+  },
+  "budget": {
+    "desktopLoginStrongSurfaces": 2,
+    "desktopListStrongSurfaces": 4,
+    "desktopEditorStrongSurfaces": 5,
+    "mobileStrongSurfaces": 3,
+    "topbarPrimaryActionsMax": 1,
+    "actionBarVisibleActionsMax": 3,
+    "alwaysVisibleRowActionsMax": 0
+  }
+}
