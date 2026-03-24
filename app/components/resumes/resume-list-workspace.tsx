@@ -108,6 +108,7 @@ export function ResumeListWorkspace({ resumes }: ResumeListWorkspaceProps) {
       router.refresh();
     } catch {
       window.alert("이력서 삭제에 실패했습니다. 잠시 후 다시 시도해 주세요.");
+    } finally {
       setIsDeleting(false);
     }
   };
