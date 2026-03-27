@@ -99,6 +99,10 @@ button {
   cursor: pointer;
 }
 
+.studio-page a:not(.resume-link):not(.contact-link) {
+  text-decoration: none;
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px;
