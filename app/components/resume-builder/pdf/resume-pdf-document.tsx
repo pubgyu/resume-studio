@@ -33,13 +33,13 @@ import type { ResumePresentation, ResumeSectionOrderKey } from "@/lib/resumes/ty
 
 const PDF_FONT_FAMILY = "NotoSansKR";
 const PDF_COLORS = {
-  accent: "#c97754",
-  border: "#eadfd7",
-  muted: "#677484",
-  page: "#fffdf8",
-  surface: "#fbf3ea",
-  tag: "#f5ebe2",
-  text: "#263241"
+  accent: "#444444",
+  border: "#dddddd",
+  muted: "#666666",
+  page: "#fcfcfa",
+  surface: "#f4f4f2",
+  tag: "#eeeeeb",
+  text: "#1a1a1a"
 };
 
 let fontsRegistered = false;
@@ -97,8 +97,8 @@ const styles = StyleSheet.create({
   },
   avatarWrap: {
     alignItems: "center",
-    backgroundColor: "#f1e1d8",
-    borderColor: "#e3d4ca",
+    backgroundColor: "#f0f0ed",
+    borderColor: "#d9d9d4",
     borderRadius: 16,
     borderWidth: 1,
     height: 86,
@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
     width: "100%"
   },
   avatarText: {
-    color: "#8d4a30",
+    color: "#4a4a4a",
     fontSize: 24,
     fontWeight: 700
   },
@@ -175,7 +175,7 @@ const styles = StyleSheet.create({
     marginBottom: 4
   },
   contactLink: {
-    color: PDF_COLORS.accent,
+    color: PDF_COLORS.text,
     fontSize: 10,
     textAlign: "right",
     textDecoration: "underline"
@@ -245,7 +245,7 @@ const styles = StyleSheet.create({
     marginTop: 4
   },
   inlineLink: {
-    color: PDF_COLORS.accent,
+    color: PDF_COLORS.text,
     textDecoration: "underline"
   },
   bulletList: {
@@ -288,7 +288,7 @@ const styles = StyleSheet.create({
     paddingVertical: 3
   },
   tagText: {
-    color: PDF_COLORS.accent,
+    color: PDF_COLORS.text,
     fontSize: 9,
     fontWeight: 500
   },
@@ -402,7 +402,7 @@ const styles = StyleSheet.create({
     fontSize: 8.7
   },
   itemLink: {
-    color: PDF_COLORS.accent,
+    color: PDF_COLORS.text,
     fontSize: 9.8,
     marginTop: 4,
     textDecoration: "underline"
